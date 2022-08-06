@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/filmdb
+    username: filmdb
+    password: filmdb
+    driver-class-name: org.mariadb.jdbc.Driver
+
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDB103Dialect
+        id: # some DBMS uses sequence tables other uses increment fields. Stop guessing: https://stackoverflow.com/questions/32968527/hibernate-sequence-doesnt-exist
+          new_generator_mappings: false
+
+    hibernate:
+      ddl-auto: none
+
+    generate-ddl: false
+    show-sql: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+springdoc:
+    packagesToScan: dk.kec.filmdb.controller
+    pathsToMatch: /**
+
+server:
+  port=9000

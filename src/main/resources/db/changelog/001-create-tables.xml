@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="1" author="klaus">
+        <createTable tableName="media_type">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="media_type_id_pk"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false" notNullConstraintName="media_type_name_not_null"
+                             unique="true" uniqueConstraintName="genre_name_unique"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="genre">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="genre_id_pk"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false" notNullConstraintName="genre_name_not_null"
+                             unique="true" uniqueConstraintName="genre_name_unique"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="actor">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="actor_id_pk"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" notNullConstraintName="actor_name_not_null"/>
+            </column>
+            <column name="external_id" type="varchar(255)"/>
+            <column name="img_url" type="varchar(255)"/>
+        </createTable>
+
+        <createTable tableName="owner">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="owner_id_pk"/>
+            </column>
+            <column name="cookie_code" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" notNullConstraintName="owner_name_not_null"
+                             unique="true" uniqueConstraintName="owner_name_unique"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false" notNullConstraintName="owner_password_not_null"/>
+            </column>
+            <column name="permissions" type="int"/>
+        </createTable>
+
+        <createTable tableName="movie">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="movie_id_pk"/>
+            </column>
+            <column name="title" type="varchar(300)">
+                <constraints nullable="false" notNullConstraintName="movie_title_not_null"/>
+            </column>
+            <column name="subtitle" type="varchar(300)"/>
+            <column name="year" type="smallint"/>
+            <column name="runtime" type="int"/>
+            <column name="rating" type="double"/>
+            <column name="comment" type="varchar(255)"/>
+            <column name="plot" type="varchar(2000)"/>
+            <column name="country" type="varchar(255)">
+                <constraints nullable="false" notNullConstraintName="movie_country_not_null"/>
+            </column>
+            <column name="language" type="varchar(255)"/>
+            <column name="is_tv" type="bool"/>
+            <column name="external_id" type="varchar(255)"/>
+            <column name="img_url" type="varchar(255)"/>
+            <column name="disk_id" type="varchar(20)"/>
+            <column name="disk_label" type="varchar(20)"/>
+            <column name="file_date" type="datetime"/>
+            <column name="file_size" type="int"/>
+            <column name="file_name" type="varchar(255)"/>
+            <column name="md5" type="varchar(255)"/>
+            <column name="audio_codec" type="varchar(50)"/>
+            <column name="video_codec" type="varchar(50)"/>
+            <column name="video_height" type="smallint"/>
+            <column name="video_width" type="smallint"/>
+            <column name="media_type_id" type="bigint">
+                <constraints referencedTableName="media_type" referencedColumnNames="id"
+                             foreignKeyName="media_type_id_fk"/>
+            </column>
+            <column name="owner_id" type="bigint">
+                <constraints referencedTableName="owner" referencedColumnNames="id" foreignKeyName="owner_id_fk"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="role">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="role_id_pk"/>
+            </column>
+            <column name="name" type="varchar(255)"> <!-- Terminator 801 -->
+                <constraints nullable="false" notNullConstraintName="role_name_not_null"/>
+            </column>
+            <column name="title" type="varchar(100)"> <!-- Actor -->
+                <constraints nullable="false" notNullConstraintName="role_title_not_null"/>
+            </column>
+            <column name="actor_id" type="bigint"> <!-- 42 => Arnold Schwarzenegger -->
+                <constraints referencedTableName="actor" referencedColumnNames="id" foreignKeyName="actor_id_fk"
+                             unique="true" uniqueConstraintName="role_actor_id_movie_id_unique"
+                             nullable="false" notNullConstraintName="role_actor_id_not_null"/>
+            </column>
+            <column name="movie_id" type="bigint"> <!-- 42 => Terminator 2 - Judgment Day -->
+                <constraints referencedTableName="movie" referencedColumnNames="id" foreignKeyName="movie_id_fk"
+                             unique="true" uniqueConstraintName="role_actor_id_movie_id_unique"
+                             nullable="false" notNullConstraintName="role_movie_id_not_null"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

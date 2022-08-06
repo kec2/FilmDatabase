@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mariadb:
+    image: 'mariadb'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_password
+      MYSQL_DATABASE: filmdb
+      MYSQL_USER: filmdb
+      MYSQL_PASSWORD: filmdb
+    ports:
+      - 3306:3306
+    command: --default-authentication-plugin=mysql_native_password
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 9080:8080
+
