@@ -1,6 +1,9 @@
 package dk.kec.filmdb.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -15,6 +18,9 @@ import java.util.List;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 public class Movie {
@@ -54,7 +60,7 @@ public class Movie {
 
     private Double rating;
 
-    private String filename;
+    private String fileName;
     private Long fileSize;
     private Timestamp fileDate;
     private String audioCodec;
@@ -62,7 +68,7 @@ public class Movie {
     private Integer videoWidth;
     private Integer videoHeight;
 
-    private Boolean istv;
+    private Boolean isTv;
 
     @OneToOne
     private MediaType mediaType;
