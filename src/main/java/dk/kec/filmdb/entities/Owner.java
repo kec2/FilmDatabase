@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @Setter
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Owner {
+public class Owner extends Auditing {
 
     @Id
     @GeneratedValue

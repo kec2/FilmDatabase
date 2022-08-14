@@ -20,7 +20,7 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Genre {
+public class Genre extends Auditing {
 
     @Id
     @GeneratedValue

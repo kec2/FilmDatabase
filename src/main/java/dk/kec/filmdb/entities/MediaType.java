@@ -20,7 +20,7 @@ import javax.persistence.Id;
 @Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class MediaType {
+public class MediaType extends Auditing {
 
     @Id
     @GeneratedValue

@@ -19,7 +19,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"actor_id", "movie_id"}, name = "role_actor_id_movie_id_unique")})
-public class Role {
+public class Role extends Auditing {
 
     @Id
     @GeneratedValue

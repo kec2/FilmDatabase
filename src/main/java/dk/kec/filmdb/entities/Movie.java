@@ -23,7 +23,7 @@ import java.util.List;
 @Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Movie {
+public class Movie extends Auditing {
 
     @Id
     @GeneratedValue

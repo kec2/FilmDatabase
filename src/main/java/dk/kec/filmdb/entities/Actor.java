@@ -21,7 +21,7 @@ import java.util.List;
 @Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Actor {
+public class Actor extends Auditing {
 
     @Id
     @GeneratedValue
