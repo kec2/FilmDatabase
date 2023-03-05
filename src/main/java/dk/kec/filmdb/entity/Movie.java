@@ -38,6 +38,7 @@ public class Movie extends Auditing {
 
     private String externalId; // engine:id. fx imdb:tt12345678
 
+    @Column(name = "`year`")
     private Integer year;
 
     private String imgUrl;
