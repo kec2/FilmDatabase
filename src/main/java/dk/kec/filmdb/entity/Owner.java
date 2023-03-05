@@ -1,4 +1,4 @@
-package dk.kec.filmdb.entities;
+package dk.kec.filmdb.entity;
 
 import jakarta.persistence.GenerationType;
 import lombok.Getter;

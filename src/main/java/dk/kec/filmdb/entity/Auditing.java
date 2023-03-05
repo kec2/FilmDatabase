@@ -1,4 +1,4 @@
-package dk.kec.filmdb.entities;
+package dk.kec.filmdb.entity;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;

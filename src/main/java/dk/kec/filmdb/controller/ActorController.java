@@ -1,7 +1,7 @@
 package dk.kec.filmdb.controller;
 
-import dk.kec.filmdb.ActorService;
-import dk.kec.filmdb.entities.Actor;
+import dk.kec.filmdb.service.ActorService;
+import dk.kec.filmdb.entity.Actor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

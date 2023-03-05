@@ -1,6 +1,6 @@
-package dk.kec.filmdb.repositories;
+package dk.kec.filmdb.repository;
 
-import dk.kec.filmdb.entities.Genre;
+import dk.kec.filmdb.entity.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GenreRepository extends JpaRepository<Genre, Long> {}

@@ -1,6 +1,6 @@
-package dk.kec.filmdb.repositories;
+package dk.kec.filmdb.repository;
 
-import dk.kec.filmdb.entities.Actor;
+import dk.kec.filmdb.entity.Actor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

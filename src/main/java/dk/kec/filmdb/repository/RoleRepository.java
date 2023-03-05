@@ -1,6 +1,6 @@
-package dk.kec.filmdb.repositories;
+package dk.kec.filmdb.repository;
 
-import dk.kec.filmdb.entities.Role;
+import dk.kec.filmdb.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {}

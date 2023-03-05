@@ -1,4 +1,4 @@
-package dk.kec.filmdb.entities;
+package dk.kec.filmdb.entity;
 
 import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
@@ -16,17 +16,17 @@ import jakarta.persistence.Id;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class MediaType extends Auditing {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Genre extends Auditing {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String name; // dvd, blu-ray, ...
+    private String name; // Horror, Action, ...
 }
