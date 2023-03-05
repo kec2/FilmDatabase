@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/001-create-tables.xml
   - include:
       file: db/changelog/002-add-auditing.xml
+  - include:
+      file: db/changelog/003-add-genres.xml
