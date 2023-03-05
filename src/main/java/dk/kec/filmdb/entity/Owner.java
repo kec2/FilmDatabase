@@ -1,6 +1,7 @@
 package dk.kec.filmdb.entity;
 
 import jakarta.persistence.GenerationType;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -11,8 +12,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-@Getter
-@Setter
+@Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 public class Owner extends Auditing {
