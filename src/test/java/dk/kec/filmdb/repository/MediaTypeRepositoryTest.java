@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
 import jakarta.persistence.EntityManager;
@@ -28,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 // Alternative 2: Use SpringBootTest
 @SpringBootTest
 @ContextConfiguration(name = "default")
+@ActiveProfiles("test")
 
 // Alternative 3: Use Slice
 //@DataJpaTest

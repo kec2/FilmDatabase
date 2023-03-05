@@ -1,0 +1,38 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  #logging:level:org:hibernate:debug
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        id: # some DBMS uses sequence tables other uses increment fields. Stop guessing: https://stackoverflow.com/questions/32968527/hibernate-sequence-doesnt-exist
+          new_generator_mappings: false
+
+    hibernate:
+      # none, validate, update, create-drop
+      ddl-auto: none
+
+    generate-ddl: false
+    show-sql: true
+    defer-datasource-initialization: false
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+server:
+  port=9001
