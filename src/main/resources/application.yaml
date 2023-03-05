@@ -5,11 +5,10 @@ spring:
     password: filmdb
     driver-class-name: org.mariadb.jdbc.Driver
 
-
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MariaDB103Dialect
+        dialect: org.hibernate.dialect.MariaDBDialect
         id: # some DBMS uses sequence tables other uses increment fields. Stop guessing: https://stackoverflow.com/questions/32968527/hibernate-sequence-doesnt-exist
           new_generator_mappings: false
 
