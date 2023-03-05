@@ -22,17 +22,17 @@ spring:
         id: # some DBMS uses sequence tables other uses increment fields. Stop guessing: https://stackoverflow.com/questions/32968527/hibernate-sequence-doesnt-exist
           new_generator_mappings: false
 
-    hibernate:
-      # none, validate, update, create-drop
-      ddl-auto: none
+#    hibernate:
+#      # none, validate, update, create-drop
+#      ddl-auto: none
 
-    generate-ddl: false
-    show-sql: true
-    defer-datasource-initialization: false
+#    generate-ddl: false
+#    show-sql: true
+#    defer-datasource-initialization: false
 
-  liquibase:
-    enabled: true
-    change-log: classpath:db/changelog/db.changelog-master.yaml
+#  liquibase:
+#    enabled: true
+#    change-log: classpath:db/changelog/db.changelog-master.yaml
 
 server:
   port=9001
