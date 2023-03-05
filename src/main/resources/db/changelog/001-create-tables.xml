@@ -11,7 +11,7 @@
             </column>
             <column name="name" type="varchar(50)">
                 <constraints nullable="false" notNullConstraintName="media_type_name_not_null"
-                             unique="true" uniqueConstraintName="genre_name_unique"/>
+                             unique="true" uniqueConstraintName="media_type_genre_name_unique"/>
             </column>
         </createTable>
 
@@ -21,7 +21,7 @@
             </column>
             <column name="name" type="varchar(50)">
                 <constraints nullable="false" notNullConstraintName="genre_name_not_null"
-                             unique="true" uniqueConstraintName="genre_name_unique"/>
+                             unique="true" uniqueConstraintName="genre_genre_name_unique"/>
             </column>
         </createTable>
 
