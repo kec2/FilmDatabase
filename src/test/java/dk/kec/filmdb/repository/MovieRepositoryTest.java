@@ -1,6 +1,7 @@
 package dk.kec.filmdb.repository;
 
 import dk.kec.filmdb.entity.Movie;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
@@ -105,8 +105,8 @@ public class MovieRepositoryTest {
         movieRepository.flush();
         em.clear();
 
-        List<Movie> remaning = movieRepository.findAll();
-        assertEquals(2, remaning.size());
+        List<Movie> remaining = movieRepository.findAll();
+        assertEquals(2, remaining.size());
     }
 
     @Test
@@ -117,8 +117,8 @@ public class MovieRepositoryTest {
         movieRepository.flush();
         em.clear();
 
-        List<Movie> remaning = movieRepository.findAll();
-        assertEquals(0, remaning.size());
+        List<Movie> remaining = movieRepository.findAll();
+        assertEquals(0, remaining.size());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package dk.kec.filmdb.repository;
 
 import dk.kec.filmdb.entity.Genre;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,8 +114,8 @@ public class GenreRepositoryTest {
         genreRepository.flush();
         em.clear();
 
-        List<Genre> remaning = genreRepository.findAll();
-        assertEquals(2, remaning.size());
+        List<Genre> remaining = genreRepository.findAll();
+        assertEquals(2, remaining.size());
     }
 
     @Test
@@ -128,8 +126,8 @@ public class GenreRepositoryTest {
         genreRepository.flush();
         em.clear();
 
-        List<Genre> remaning = genreRepository.findAll();
-        assertEquals(0, remaning.size());
+        List<Genre> remaining = genreRepository.findAll();
+        assertEquals(0, remaining.size());
     }
 
     @Test

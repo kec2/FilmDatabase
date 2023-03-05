@@ -1,6 +1,7 @@
 package dk.kec.filmdb.repository;
 
 import dk.kec.filmdb.entity.Actor;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,7 +86,7 @@ public class ActorRepositoryTest {
     }
 
     @Test
-    void deleteAActor() {
+    void deleteAnActor() {
         createThreeActors();
 
         List<Actor> all = actorRepository.findAll();
@@ -96,20 +96,20 @@ public class ActorRepositoryTest {
         actorRepository.flush();
         em.clear();
 
-        List<Actor> remaning = actorRepository.findAll();
-        assertEquals(2, remaning.size());
+        List<Actor> remaining = actorRepository.findAll();
+        assertEquals(2, remaining.size());
     }
 
     @Test
-    void deleteAActorThatDoesNotExist() {
+    void deleteAnActorThatDoesNotExist() {
         Actor actor = Actor.builder().name("ImNotHere").build();
 
         actorRepository.delete(actor);
         actorRepository.flush();
         em.clear();
 
-        List<Actor> remaning = actorRepository.findAll();
-        assertEquals(0, remaning.size());
+        List<Actor> remaining = actorRepository.findAll();
+        assertEquals(0, remaining.size());
     }
 
     @Test

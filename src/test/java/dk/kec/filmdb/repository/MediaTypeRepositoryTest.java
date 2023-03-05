@@ -1,6 +1,7 @@
 package dk.kec.filmdb.repository;
 
 import dk.kec.filmdb.entity.MediaType;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
@@ -115,8 +115,8 @@ public class MediaTypeRepositoryTest {
         mediaTypeRepository.flush();
         em.clear();
 
-        List<MediaType> remaning = mediaTypeRepository.findAll();
-        assertEquals(2, remaning.size());
+        List<MediaType> remaining = mediaTypeRepository.findAll();
+        assertEquals(2, remaining.size());
     }
 
     @Test
@@ -127,8 +127,8 @@ public class MediaTypeRepositoryTest {
         mediaTypeRepository.flush();
         em.clear();
 
-        List<MediaType> remaning = mediaTypeRepository.findAll();
-        assertEquals(0, remaning.size());
+        List<MediaType> remaining = mediaTypeRepository.findAll();
+        assertEquals(0, remaining.size());
     }
 
     @Test
