@@ -5,6 +5,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
 
     <changeSet id="3::dataForTable" author="klaus">
-        <loadData file="data/genres.csv" separator="," relativeToChangelogFile="true" tableName="genre"/>
+        <loadData file="data/genres.csv" relativeToChangelogFile="true" tableName="genre"/>
     </changeSet>
 </databaseChangeLog>

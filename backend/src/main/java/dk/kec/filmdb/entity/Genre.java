@@ -6,28 +6,26 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Owner extends Auditing {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Genre extends Auditing {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String name;
-
-    @Column(nullable = false)
-    private String password; // skal hashes
-
-    private String cookieCode;
-
-    private Long permissions;
-
-    private String email;
-
+    private String name; // Horror, Action, ...
 }
