@@ -84,6 +84,14 @@ export class ImdbApiClient {
         return data;
     }
 
+    /*
+        Search into all TV Episode titles.
+
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in search action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        expression	Required	Expression for search.
+    */
     async searchEpisode(expression: string): Promise<SearchData> {
         const URL = `${this.BASE_URL}/en/API/SearchEpisode/${this.API_KEY}/${expression}`;
         let data = this.fetchData<SearchData>('GET', URL);
@@ -91,6 +99,14 @@ export class ImdbApiClient {
         return data;
     }
 
+    /*
+        Search into all companies.
+
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in search action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        expression	Required	Expression for search.
+    */
     async searchCompany(expression: string): Promise<SearchData> {
         // GET /{lang?}/API/SearchCompany/{apiKey}/{expression}
         const URL = `${this.BASE_URL}/en/API/SearchCompany/${this.API_KEY}/${expression}`;
@@ -99,6 +115,14 @@ export class ImdbApiClient {
         return data;
     }
 
+    /*
+        Search into all keywords.
+
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in search action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        expression	Required	Expression for search.
+    */
     async searchKeyword(expression: string): Promise<SearchData> {
         // GET /{lang?}/API/SearchKeyword/{apiKey}/{expression}
         const URL = `${this.BASE_URL}/en/API/SearchKeyword/${this.API_KEY}/${expression}`;
@@ -107,6 +131,14 @@ export class ImdbApiClient {
         return data;
     }
 
+    /*
+        Search into all items (Movies, Series TVs, TV Episodes, Names, Companies, Keywords and more).
+
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in search action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        expression	Required	Expression for search.
+    */
     async searchAll(expression: string): Promise<SearchData> {
         // GET /{lang?}/API/SearchAll/{apiKey}/{expression}
         const URL = `${this.BASE_URL}/en/API/SearchAll/${this.API_KEY}/${expression}`;
@@ -115,18 +147,27 @@ export class ImdbApiClient {
         return data;
     }
 
-     advancedSearch() {
-    // GET /{lang?}/API/AdvancedSearch/{apiKey}/?parameters=values}
+    /*
+        Welcome to IMDb-API's most powerful title search. Using the options below you can combine a variety of the types of information we catalog to create extremely specific searches. Want Canadian horror movies of the 1970s that at least 100 IMDb users have given an average rating above a 6? You can find them here.
+        Remember, all the fields below are optional (though you should fill out at least one so there's something to search for). Please note that when you're given the option of a range (two date boxes for release date, or two boxes for min/max number of votes), you do not need to fill out both boxes. Filling out the 'min' box will give you results of things larger/after; filling out the 'max' box will give you results of things smaller/before.
+
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in advanced search action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        parameters	Required	Query string parameters. It is mandatory to enter at least one filter.
+    */
+    advancedSearch() {
+        // GET /{lang?}/API/AdvancedSearch/{apiKey}/?parameters=values}
     }
 
     /*
-    Get Movies or Series TV information.
+        Get Movies or Series TV information.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). PlotLocal and WikipediaPlot properties has been change by your selected language.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
-    options 	Optional	Options to get more information about: FullActor, FullCast, Posters, Images, Trailer, Ratings, Wikipedia.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). PlotLocal and WikipediaPlot properties has been change by your selected language.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
+        options 	Optional	Options to get more information about: FullActor, FullCast, Posters, Images, Trailer, Ratings, Wikipedia.
     */
     async getTitle(lang: string, id: string, options: string): Promise<TitleData> {
         // GET /{lang?}/API/Title/{apiKey}/{id}/{options?}
@@ -137,15 +178,15 @@ export class ImdbApiClient {
     }
 
     /*
-    Generate report from Movie or Series TV as PNG image file.
+        Generate report from Movie or Series TV as PNG image file.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). PlotLocal and WikipediaPlot properties has been change by your selected language.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
-    options	    Optional	Options to get more information about: FullActor, FullCast, Ratings, Wikipedia.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). PlotLocal and WikipediaPlot properties has been change by your selected language.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
+        options	    Optional	Options to get more information about: FullActor, FullCast, Ratings, Wikipedia.
 
-    TODO this returns a PNG image. Don't know what to do here!!!
+        TODO this returns a PNG image. Don't know what to do here!!!
     */
     async getReport(lang: string, id: string, options: string): Promise<object> {
         // GET /{lang?}/API/Report/{apiKey}/{id}/{options?}
@@ -156,12 +197,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get full cast/crew and actors/actresses of Movie or Series TV.
+        Get full cast/crew and actors/actresses of Movie or Series TV.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getFullCast(id: string): Promise<FullCastData>{
         // GET /{lang?}/API/FullCast/{apiKey}/{id}
@@ -172,12 +213,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get Posters of Movie or Series TV.
+        Get Posters of Movie or Series TV.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id      	Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id      	Required	A valid IMDb Id. Id started withs tt.
     */
     async getPosters(id: string): Promise<PosterData> {
         // GET /{lang?}/API/Posters/{apiKey}/{id}
@@ -188,13 +229,13 @@ export class ImdbApiClient {
     }
 
     /*
-    Get images of Movie or Series TV or People (Name) (tt1234567) and Name (nm1234567).
+        Get images of Movie or Series TV or People (Name) (tt1234567) and Name (nm1234567).
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt or nm.
-    options	    Optional	Options can Short (default) or Full. Short parameter contains 48 images. Full parameter (tt only) contains all available images.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt or nm.
+        options	    Optional	Options can Short (default) or Full. Short parameter contains 48 images. Full parameter (tt only) contains all available images.
     */
     async getImages(id: string, options: string): Promise<ImageData>{
         // GET /{lang?}/API/Images/{apiKey}/{id}/{options?}
@@ -205,12 +246,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get trailers of Movie or Series TV.
+        Get trailers of Movie or Series TV.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
     */
      async getTrailer(id: string): Promise<TrailerData>{
         // GET /{lang?}/API/Trailer/{apiKey}/{id}
@@ -221,12 +262,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get ratings of Movie or Series TV in: IMDb, Metacritic, RottenTomatoes, TheMovieDb and TV.com.
+        Get ratings of Movie or Series TV in: IMDb, Metacritic, RottenTomatoes, TheMovieDb and TV.com.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getRatings(id: string): Promise<RatingData> {
         // GET /{lang?}/API/Ratings/{apiKey}/{id}
@@ -253,13 +294,13 @@ export class ImdbApiClient {
     }
 
     /*
-    Get episodes of season in Series TV.
+        Get episodes of season in Series TV.
 
-    PARAMETERS	    REQUIRED	DESCRIPTION
-    lang	        Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	        Required	API Key required for all API calls. Register on site to get free API Key.
-    id	            Required	A valid IMDb Id. Id started withs tt.
-    seasonNumber	Required	Season number to get episodes.
+        PARAMETERS	    REQUIRED	DESCRIPTION
+        lang	        Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	        Required	API Key required for all API calls. Register on site to get free API Key.
+        id	            Required	A valid IMDb Id. Id started withs tt.
+        seasonNumber	Required	Season number to get episodes.
     */
     async getSeasonEpisodes(id: string, seasonNumber: string): Promise<SeasonEpisodeData> {
         // GET /{lang?}/API/SeasonEpisodes/{apiKey}/{id}/{seasonNumber}
@@ -270,28 +311,28 @@ export class ImdbApiClient {
     }
 
     /*
-    Get Movie or Series TV in all external sites with Identifier and URL.
+        Get Movie or Series TV in all external sites with Identifier and URL.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
     */
-    async getExternalSites(id: string): Promise<ExternalSitesData> {
+    async getExternalSites(id: string): Promise<"ExternalSiteData> {
         // GET /{lang?}/API/ExternalSites/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/ExternalSites/${this.API_KEY}/${id}`;
-        let data = this.fetchData<ExternalSitesData>('GET', URL);
+        let data = this.fetchData<"ExternalSiteData>('GET', URL);
         console.log('ExternalSites: ' + data);
         return data;
     }
 
     /*
-    Get Wikipedia plot of Movie or Series TV (tt1234567) as PlainText and Html.
+        Get Wikipedia plot of Movie or Series TV (tt1234567) as PlainText and Html.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	Optional	Language of results. Default value is "en" (English). Language is important for return value of wikipedia plot.
-    apiKey	Required	API Key required for all API calls. Register on site to get free API Key.
-    id	    Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	Optional	Language of results. Default value is "en" (English). Language is important for return value of wikipedia plot.
+        apiKey	Required	API Key required for all API calls. Register on site to get free API Key.
+        id	    Required	A valid IMDb Id. Id started withs tt.
     */
     async getWikipedia(id: string, lang: string): Promise<WikipediaData> {
         // GET /{lang?}/API/Wikipedia/{apiKey}/{id}
@@ -302,12 +343,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get data from IMDb List.
+        Get data from IMDb List.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb List Id. Id started withs ls.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb List Id. Id started withs ls.
     */
     async getIMDbList(id: string): Promise<IMDbListData> {
         // GET /{lang?}/API/IMDbList/{apiKey}/{id}
@@ -318,12 +359,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get user reviews of Movie or Series TV.
+        Get user reviews of Movie or Series TV.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getReviews(id: string): Promise<ReviewData> {
         // GET /{lang?}/API/Reviews/{apiKey}/{id}
@@ -334,12 +375,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get Metacritic reviews of Movies.
+        Get Metacritic reviews of Movies.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getMetacriticReviews(id: string): Promise<MetacriticReviewData> {
         // GET /{lang?}/API/MetacriticReviews/{apiKey}/{id}
@@ -350,12 +391,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get FAQ of Movie or Series TV.
+        Get FAQ of Movie or Series TV.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getFaq(id: string): Promise<FAQData> {
         // GET /{lang?}/API/FAQ/{apiKey}/{id}
@@ -366,12 +407,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get Awards of Movie or Series TV.
+        Get Awards of Movie or Series TV.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getAwards(id: string): Promise<AwardData> {
         // GET /{lang?}/API/Awards/{apiKey}/{id}
@@ -384,16 +425,16 @@ export class ImdbApiClient {
     //function get(){Others}
 
     /*
-    Get Top 250 Movies.
+        Get Top 250 Movies.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
-    async getTop250Movies():Promise<MostPopularData> {
+    async getTop250Movies():Promise<Top250Data> {
         // GET /{lang?}/API/Top250Movies/{apiKey}
         const URL = `${this.BASE_URL}/en/API/Top250Movies/${this.API_KEY}`;
-        let data = this.fetchData<MostPopularData>('GET', URL);
+        let data = this.fetchData<Top250Data>('GET', URL);
         console.log('Top250Movies: ' + data);
         return data;
     }
@@ -401,26 +442,26 @@ export class ImdbApiClient {
 
 
     /*
-    Get Top 250 Series TVs.
+        Get Top 250 Series TVs.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
-    async getTop250TVs(): Promise<MostPopularData> {
+    async getTop250TVs(): Promise<Top250Data> {
         // GET /{lang?}/API/Top250TVs/{apiKey}
         const URL = `${this.BASE_URL}/en/API/Top250TVs/${this.API_KEY}`;
-        let data = this.fetchData<MostPopularData>('GET', URL);
+        let data = this.fetchData<Top250Data>('GET', URL);
         console.log('Top250TVs: ' + data);
         return data;
     }
 
     /*
-    Get Top 100 Most Polular Movies.
+        Get Top 100 Most Polular Movies.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getMostPopularMovies(): Promise<MostPopularData> {
         // GET /{lang?}/API/MostPopularMovies/{apiKey}
@@ -431,11 +472,11 @@ export class ImdbApiClient {
     }
 
     /*
-    Get Top 100 Most Popular Series TVs.
+        Get Top 100 Most Popular Series TVs.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getMostPopularTVs(): Promise<MostPopularData> {
         // GET /{lang?}/API/MostPopularTVs/{apiKey}
@@ -446,56 +487,56 @@ export class ImdbApiClient {
     }
 
     /*
-    Get In Theaters Movies.
+        Get In Theaters Movies.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
-    async getInTheaters(): Promise<InTheatersData> {
+    async getInTheaters(): Promise<NewMovieData> {
         // GET /{lang?}/API/InTheaters/{apiKey
         const URL = `${this.BASE_URL}/en/API/InTheaters/${this.API_KEY}`;
-        let data = this.fetchData<InTheatersData>('GET', URL);
+        let data = this.fetchData<NewMovieData>('GET', URL);
         console.log('InTheaters: ' + data);
         return data;
     }
 
     /*
-    Get Coming Soon Movies.
+        Get Coming Soon Movies.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
-    async getComingSoon(): Promise<InTheatersData> {
+    async getComingSoon(): Promise<NewMovieData> {
         // GET /{lang?}/API/ComingSoon/{apiKey}
         const URL = `${this.BASE_URL}/en/API/ComingSoon/${this.API_KEY}`;
-        let data = this.fetchData<InTheatersData>('GET', URL);
+        let data = this.fetchData<NewMovieData>('GET', URL);
         console.log('ComingSoon: ' + data);
         return data;
     }
 
     /*
-    Get Weekend Box Office.
+        Get Weekend Box Office.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
-    async getBoxOffice(): Promise<BoxOfficeData> {
+    async getBoxOffice(): Promise<BoxOfficeWeekendData> {
         // GET /{lang?}/API/BoxOffice/{apiKey}
         const URL = `${this.BASE_URL}/en/API/BoxOffice/${this.API_KEY}`;
-        let data = this.fetchData<BoxOfficeData>('GET', URL);
+        let data = this.fetchData<BoxOfficeWeekendData>('GET', URL);
         console.log('BoxOffice: ' + data);
         return data;
     }
 
     /*
-    Get Box Office in all times.
+        Get Box Office in all times.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getBoxOfficeAllTime(): Promise<BoxOfficeAllTimeData> {
         // GET /{lang?}/API/BoxOfficeAllTime/{apiKey}
@@ -506,12 +547,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get information of people (actor, actress, director, writers, ...).
+        Get information of people (actor, actress, director, writers, ...).
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey  	Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Name Id. Id startd withs nm.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey  	Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Name Id. Id startd withs nm.
     */
     async getName(id: string): Promise<NameData> {
         // GET /{lang?}/API/Name/{apiKey}/{id}
@@ -522,12 +563,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get Awards of people.
+        Get Awards of people.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id      	Required	A valid IMDb Name Id. Id started withs nm.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id      	Required	A valid IMDb Name Id. Id started withs nm.
     */
     async getNameAwards(id: string): Promise<NameAwardData>{
         // GET /{lang?}/API/NameAwards/{apiKey}/{id}
@@ -538,13 +579,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get information of company with movies.
+        Get information of company with movies.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Company Id. Id started withs co.
-    RESULT
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Company Id. Id started withs co.
     */
     async getCompany(id: string): Promise<CompanyData> {
         const URL = `${this.BASE_URL}/en/API/Company/${this.API_KEY}/${id}`;
@@ -554,12 +594,12 @@ export class ImdbApiClient {
     }
 
     /*
-    Get Movie or Series TVs in this keyword.
+        Get Movie or Series TVs in this keyword.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Keyword (already founded in SearchKeyword action)
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Keyword (already founded in SearchKeyword action)
     */
     async getKeyword(id: string): Promise<KeywordData> {
         const URL = `${this.BASE_URL}/en/API/Keyword/${this.API_KEY}/${id}`;
@@ -569,11 +609,11 @@ export class ImdbApiClient {
     }
 
     /*
-    Get YouTube Trailer URL by IMDb Id.
+        Get YouTube Trailer URL by IMDb Id.
 
-    lang	Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	Required	API Key required for all API calls. Register on site to get free API Key.
-    id      Required	A valid IMDb Id. Id started withs tt.
+        lang	Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	Required	API Key required for all API calls. Register on site to get free API Key.
+        id      Required	A valid IMDb Id. Id started withs tt.
     */
     async getYouTubeTrailer(id: string): Promise<YouTubeTrailerData> {
         const URL = `${this.BASE_URL}/en/API/YouTubeTrailer/${this.API_KEY}/${id}`;
@@ -587,8 +627,8 @@ export class ImdbApiClient {
     // Tools
 
     /*
-    View the number of daily uses of the services..
-    apiKey	Required	API Key required for all API calls. Register on site to get free API Key.
+        View the number of daily uses of the services..
+        apiKey	Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getUsage(): Promise<UsageData> {
         const URL = `${this.BASE_URL}/API/Usage/${this.API_KEY}`;
@@ -598,10 +638,10 @@ export class ImdbApiClient {
     }
 
     /*
-    apiKey	Required	API Key required for all API calls. Register on site to get free API Key.
-    size	Required	Size of Image. Examples: 8x11, 16x22, 32x44, 64x88, ... (Width x Height)
-    url	Required	URL of Image.
-    RESULT	URL Of JPG Image
+        apiKey	Required	API Key required for all API calls. Register on site to get free API Key.
+        size	Required	Size of Image. Examples: 8x11, 16x22, 32x44, 64x88, ... (Width x Height)
+        url	Required	URL of Image.
+        RESULT	URL Of JPG Image
     */
     async resizeImage(size: string, url: string): Promise<string> {
         const URL = `${this.BASE_URL}/API/ResizeImage?apikey=${this.API_KEY}&size=${size}&url=${url}`;
@@ -612,22 +652,18 @@ export class ImdbApiClient {
 
 
     /*
-    Get Image by size.
-    @param {string} size - Size of Poster.
-    Supported Sizes
-    Wide - Ratio 6:9/9:6 : original, w45, w92, w154, w185, w200, w300, w342, w400, w500, w780 and w1280
-    Square - Ratio 1:1 : s32, s45, s50, s64, s66, s90, s100, s115, s128, s132, s150, s180, s230, s235, s264, s300, s375, s470
-    @returns {string} 	URL Of JPG Image
+        Get Image by size.
+        @param {string} size - Size of Poster.
+        Supported Sizes
+        Wide - Ratio 6:9/9:6 : original, w45, w92, w154, w185, w200, w300, w342, w400, w500, w780 and w1280
+        Square - Ratio 1:1 : s32, s45, s50, s64, s66, s90, s100, s115, s128, s132, s150, s180, s230, s235, s264, s300, s375, s470
+        @returns {string} 	URL Of JPG Image
     */
     async resizePoster(size: string, url: string): Promise<string> {
         const URL = `${this.BASE_URL}/API/resizePoster?apikey=${this.API_KEY}&size=${size}&url=${url}`;
         let data = this.fetchData<string>('GET', URL);
         console.log('resizePoster: ' + data);
         return data;
-    }
-
-    private getImdbUrl(): string {
-        return `${this.BASE_URL}/{LANG}/{this.API_KEY}`;
     }
 
     /*
@@ -648,83 +684,6 @@ export class ImdbApiClient {
         return data;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export type InTheatersData = {
-  "items": [
-    {
-      "id": string;
-      "title": string;
-      "fullTitle": string;
-      "year": string;
-      "releaseState": string;
-      "image": string;
-      "runtimeMins": string;
-      "runtimeStr": string;
-      "plot": string;
-      "contentRating": string;
-      "imDbRating": string;
-      "imDbRatingCount": string;
-      "metacriticRating": string;
-      "genres": string;
-      "genreList": [
-        {
-          "key": string;
-          "value": string;
-        }
-      ],
-      "directors": string;
-      "directorList": [
-        {
-          "id": string;
-          "name": string;
-        }
-      ],
-      "stars": string;
-      "starList": [
-        {
-          "id": string;
-          "name": string;
-        }
-      ]
-    }
-  ],
-  "errorMessage": string;
-}
-
-
-
-export type BoxOfficeData = {
-  "items": [
-    {
-      "id": string;
-      "rank": string;
-      "title": string;
-      "image": string;
-      "weekend": string;
-      "gross": string;
-      "weeks": string;
-    }
-  ],
-  "errorMessage": string;
-}
-
-
-
-
-
 
 export type ActorShort = {
     "id": string;
@@ -748,13 +707,13 @@ export type AwardData = {
 export type AwardEvent = {
     "eventTitle": string;
     "eventYear": string;
-    "outcomeItems": [AwardOutcome]
+    "outcomeItems": [AwardOutcome];
 }
 
 export type AwardOutcome = {
     "outcomeTitle": string;
     "outcomeCategory": string;
-    "outcomeDetails": [AwardOutcomeDetail]
+    "outcomeDetails": [AwardOutcomeDetail];
 }
 
 export type AwardOutcomeDetail = {
@@ -787,18 +746,18 @@ export type BoxOfficeShort = {
 }
 
 export type BoxOfficeWeekendData = {
-    items: [BoxOfficeWeekendDataDetail];
-    errorMessage: string;
+    "items": [BoxOfficeWeekendDataDetail];
+    "errorMessage": string;
 }
 
 export type BoxOfficeWeekendDataDetail = {
-    id: string;
-    rank: string;
-    title: string;
-    image: string;
-    weekend: string;
-    gross: string;
-    weeks: string;
+    "id": string;
+    "rank": string;
+    "title": string;
+    "image": string;
+    "weekend": string;
+    "gross": string;
+    "weeks": string;
 }
 
 export type CastMovie = {
@@ -821,18 +780,18 @@ export type CastShortItem = {
 }
 
 export type CompanyData = {
-    id: string;
-    name: string;
-    items: [ CompanyItem ];
-    errorMessage:string;
+    "id": string;
+    "name": string;
+    "items": [CompanyItem];
+    "errorMessage":string;
 }
 
 export type CompanyItem = {
-    id: string;
-    title: string;
-    year: string;
-    image: string;
-    imDbRating: string;
+    "id": string;
+    "title": string;
+    "year": string;
+    "image": string;
+    "imDbRating": string;
 }
 
 export type CompanyShort = {
@@ -853,7 +812,7 @@ export type EpisodeShortDetail = {
    "imDbRatingCount": string;
 }
 
-export type ExternalSitesData = {
+export type ExternalSiteData = {
     "imDbId": string;
     "title": string;
     "fullTitle": string;
@@ -937,7 +896,7 @@ export type ExternalSitesData = {
 }
 
 export type ExternalSiteItem = {
-    "id":	string;
+    "id": string;
     "url": string;
 }
 
@@ -947,8 +906,8 @@ export type FAQData = {
     "fullTitle": string;
     "type": string;
     "year": string;
-    "items": [FAQDetail],
-    "spoilerItems": [FAQDetail],
+    "items": [FAQDetail];
+    "spoilerItems": [FAQDetail];
     "errorMessage": string;
 }
 
@@ -976,7 +935,7 @@ export type IMDbListData = {
     "created": string;
     "updated": string;
     "description": string;
-    "items": [IMDbListDataDetail],
+    "items": [IMDbListDataDetail];
     "errorMessage": string;
 }
 
@@ -1039,7 +998,7 @@ export type MetacriticReviewData = {
     "fullTitle": string;
     "type": string;
     "year": string;
-    "items": [MetacriticReviewDetail],
+    "items": [MetacriticReviewDetail];
     "errorMessage": string;
 }
 
@@ -1069,20 +1028,18 @@ export type MostPopularDataDetail = {
 }
 
 export type MovieShort = {
-    id: string;
-    title: string;
-    year: string;
-    image: string;
-    imDbRating: string;
+    "id": string;
+    "title": string;
+    "year": string;
+    "image": string;
+    "imDbRating": string;
 }
 
 export type NameAwardData = {
     "imDbId": string;
     "name": string;
     "description": string;
-    "items": [
-        NameAwardEvent
-    ],
+    "items": [NameAwardEvent];
     "nameAwardsHtml": string;
     "errorMessage": string;
 }
@@ -1114,8 +1071,8 @@ export type NameData = {
     "deathDate": string;
     "awards": string;
     "height": string;
-    "knownFor": [KnownFor],
-    "castMovies": [CastMovie],
+    "knownFor": [KnownFor];
+    "castMovies": [CastMovie];
     "errorMessage": string;
 }
 
@@ -1186,7 +1143,7 @@ export type ReviewData = {
     "fullTitle": string;
     "type": string;
     "year": string;
-    "items": [ReviewDetail],
+    "items": [ReviewDetail];
     "errorMessage": string;
 }
 
@@ -1234,12 +1191,10 @@ export type SimilarShort = {
     "imDbRating": string;
 }
 
-
 export type StarShort = {
     "id":	string;
     "name": string;
 }
-
 
 export type TitleData = {
     "id": string;
@@ -1351,7 +1306,6 @@ export type UsageData = {
     "errorMessage": string;
 }
 
-
 export type UserRatingData = {
     "imDbId": string;
     "title": string;
@@ -1379,12 +1333,12 @@ export type UserRatingDataDemographic = {
 }
 
 export type UserRatingDataDemographicDetail = {
-    "rating":	string;
-    "votes":	string;
+    "rating": string;
+    "votes": string;
 }
 
 export type UserRatingDataDetail = {
-    "rating":	string;
+    "rating": string;
     "percent": string;
     "votes": string;
 }
