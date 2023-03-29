@@ -1,398 +1,6 @@
 "use strict";
 
-export type SearchData = {
-    searchType  : string;
-    expression  : string;
-    results     : [SearchResult];
-    errorMessage: string;
-};
-
-
-export type SearchResult = {
-    id         : string;
-    resultType : string;
-    image      : string;
-    title      : string;
-    description: string;
-}
-
-export type UsageData = {
-    count: number;
-    maximum: number;
-    account: string;
-    expireDate: string;
-    errorMessage: string;
-}
-
-export type KeywordData = {
-    keyword     : string;
-    items       : [keywordItem];
-    errorMessage: string;
-}
-
-export type keywordItem = {
-    id: string;
-    title: string;
-    year: string;
-    image: string;
-    imDbRating: string;
-}
-
-export type YouTubeTrailerData = {
-    imDbId: string;
-    title: string;
-    fullTitle: string;
-    type: string;
-    year: string;
-    videoId: string;
-    videoUrl: string;
-    errorMessage: string;
-}
-
-export type CompanyData = {
-    id: string;
-    name: string;
-    items: [ CompanyItem ];
-    errorMessage:string;
-}
-
-export type CompanyItem = {
-    id: string;
-    title: string;
-    year: string;
-    image: string;
-    imDbRating: string;
-}
-
-export type TitleData = {
-    "id": string;
-    "title": string;
-    "originalTitle": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "image": string;
-    "releaseDate": string;
-    "runtimeMins": string;
-    "runtimeStr": string;
-    "plot": string;
-    "plotLocal": string;
-    "plotLocalIsRtl": boolean;
-    "awards": string;
-    "directors": string;
-    "directorList": [StarShort];
-    "writers": string;
-    "writerList": [StarShort];
-    "stars": string;
-    "starList": [StarShort];
-    "actorList": [ActorShort];
-    "fullCast": FullCastData;
-    "genres": string;
-    "genreList": [KeyValueItem];
-    "companies": string;
-    "companyList": [CompanyShort];
-    "countries": string;
-    "countryList": [KeyValueItem];
-    "languages": string;
-    "languageList": [KeyValueItem];
-    "contentRating": string;
-    "imDbRating": string;
-    "imDbRatingVotes": string;
-    "metacriticRating": string;
-    "ratings": RatingsData;
-    "wikipedia": WikipediaData;
-    "posters": PosterData;
-    "images": ImageDate;
-    "trailer": TrailerData;
-    "boxOffice": BoxOfficeShort;
-    "tagline": string;
-    "keywords": string;
-    "keywordList": [string];
-    "similars": [SimilarShort];
-    "tvSeriesInfo": TvSeriesInfo;
-    "tvEpisodeInfo": TvEpisodeInfo;
-    "errorMessage": string;
-  }
-
-export type SimilarShort = {
-    "id": string;
-    "title": string;
-    "image": string;
-    "imDbRating": string;
-}
-
-export type ImageDate = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "items": [ImageDateItem];
-    "errorMessage": string;
-}
-
-export type ImageDateItem =  {
-    "title": string;
-    "image": string;
-}
-
-export type CompanyShort = {
-    "id": string;
-    "name": string;
-}
-
-export type FullCastData = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "directors": CastShort;
-    "writers": CastShort;
-    "actors": [ActorShort];
-    "others": [CastShort];
-    "errorMessage": string;
-}
-
-export type KeyValueItem = {
-    key: string;
-    value: string;
-}
-
-export type CastShort = {
-   "job": string;
-   "items": [CastShortItem];
-}
-
-export type CastShortItem = {
-   "id": string;
-   "name": string;
-   "description": string;
-}
-
-export type ActorShort = {
-    "id": string;
-    "image": string;
-    "name": string;
-    "asCharacter": string;
-}
-
-export type TvEpisodeInfo = {
-    "seriesId": string;
-    "seriesTitle": string;
-    "seriesFullTitle": string;
-    "seriesYear": string;
-    "seriesYearEnd": string;
-    "seasonNumber": string;
-    "episodeNumber": string;
-    "previousEpisodeId": string;
-    "nextEpisodeId": string;
-}
-
-export type TvSeriesInfo = {
-    "yearEnd": string;
-    "creators": string;
-    "creatorList": [StarShort];
-    "seasons": [string];
-}
-
-export type StarShort = {
-    id:	string;
-    name: string;
-}
-
-export type Actor = {
-    "id": string;
-    "image": string;
-    "name": string;
-    "asCharacter": string;
-}
-
-export type Writer = {
-    "job": string;
-    "items": [{
-        "id": string;
-        "name": string;
-        "description": string;
-    }];
-}
-
-export type FullCastResult = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "directors": {
-        "job": string;
-        "items": [
-            {
-                "id": string;
-                "name": string;
-                "description": string;
-            }
-        ]
-    };
-    "writers": {
-        "job": string;
-        "items": [
-            {
-                "id": string;
-                "name": string;
-                "description": string;
-            }
-        ]
-    };
-    "actors": [
-        {
-            "id": string;
-            "image": string;
-            "name": string;
-            "asCharacter": string;
-        }
-    ];
-    "others": [
-        {
-            "job": string;
-            "items": [
-                {
-                    "id": string;
-                    "name": string;
-                    "description": string;
-                }
-            ]
-        }
-    ];
-    "errorMessage": string;
-}
-
-export type TrailerData = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "videoId": string;
-    "videoTitle": string;
-    "videoDescription": string;
-    "thumbnailUrl": string;
-    "uploadDate": string;
-    "link": string;
-    "linkEmbed": string;
-    "errorMessage": string;
-}
-
-export type PosterData = {
-  "imDbId": string;
-  "title": string;
-  "fullTitle": string;
-  "type": string;
-  "year": string;
-  "posters": [PosterDataItem];
-  "backdrops": [PosterDataItem];
-  "errorMessage": string;
-}
-
-export type PosterDataItem = {
-    "id": string;
-    "link": string;
-    "aspectRatio": 0;
-    "language": string;
-    "width": 0;
-    "height": 0;
-}
-
-export type Images = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "items": [
-        {
-            "title": string;
-            "image": string;
-        }
-    ];
-    "errorMessage": string;
-}
-
-export type RatingsData = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "imDb": string;
-    "metacritic": string;
-    "theMovieDb": string;
-    "rottenTomatoes": string;
-    "filmAffinity": string;
-    "errorMessage": string;
-}
-
-export type UserRatingDataDetail = {
-    rating:	string;
-    percent: string;
-    votes: string;
-}
-
-export type UserRatingDataDemographicDetail = {
-    rating:	string;
-    votes:	string;
-}
-
-export type UserRatingsData = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "totalRating": string;
-    "totalRatingVotes": string;
-    "ratings": [UserRatingDataDetail];
-    "demographicAll": UserRatingDataDemographic;
-    "demographicMales": UserRatingDataDemographic;
-    "demographicFemales": UserRatingDataDemographic;
-    "top1000Voters": UserRatingDataDemographicDetail;
-    "usUsers": UserRatingDataDemographicDetail;
-    "nonUSUsers": UserRatingDataDemographicDetail;
-    "errorMessage": string;
-}
-
-export type UserRatingDataDemographic = {
-    "allAges": UserRatingDataDemographicDetail;
-    "agesUnder18": UserRatingDataDemographicDetail;
-    "ages18To29": UserRatingDataDemographicDetail;
-    "ages30To44": UserRatingDataDemographicDetail;
-    "agesOver45": UserRatingDataDemographicDetail;
-}
-
-export type SeasonEpisodesData = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "episodes": [EpisodeShortDetail];
-    "errorMessage": string;
-}
-
-export type EpisodeShortDetail = {
-   "id": string;
-   "seasonNumber": string;
-   "episodeNumber": string;
-   "title": string;
-   "image": string;
-   "year": string;
-   "released": string;
-   "plot": string;
-   "imDbRating": string;
-   "imDbRatingCount": string;
-}
-
 export class ImdbApiClient {
-    private API_KEY: string = 'k_4c68ekfj';
     private BASE_URL: string = 'https://imdb-api.com';
     private LANG: string = 'en';
 
@@ -411,7 +19,6 @@ export class ImdbApiClient {
         console.log('search: ' + data);
         return data;
     }
-
 
     /*
         Search into all titles. It is recommended to use SearchMovieMovie or SearchMovieSeries to SearchMovie for a movie or series.
@@ -556,10 +163,10 @@ export class ImdbApiClient {
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     id	        Required	A valid IMDb Id. Id started withs tt.
     */
-    async getFullCast(id: string): Promise<FullCastResult>{
+    async getFullCast(id: string): Promise<FullCastData>{
         // GET /{lang?}/API/FullCast/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/FullCast/${this.API_KEY}/${id}`;
-        let data = this.fetchData<FullCastResult>('GET', URL);
+        let data = this.fetchData<FullCastData>('GET', URL);
         console.log('Report: ' + data);
         return data;
     }
@@ -589,10 +196,10 @@ export class ImdbApiClient {
     id	        Required	A valid IMDb Id. Id started withs tt or nm.
     options	    Optional	Options can Short (default) or Full. Short parameter contains 48 images. Full parameter (tt only) contains all available images.
     */
-    async getImages(id: string, options: string): Promise<Images>{
+    async getImages(id: string, options: string): Promise<ImageData>{
         // GET /{lang?}/API/Images/{apiKey}/{id}/{options?}
         const URL = `${this.BASE_URL}/en/API/Images/${this.API_KEY}/${id}/${options}`;
-        let data = this.fetchData<Images>('GET', URL);
+        let data = this.fetchData<ImageData>('GET', URL);
         console.log('Images: ' + data);
         return data;
     }
@@ -621,10 +228,10 @@ export class ImdbApiClient {
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     id	        Required	A valid IMDb Id. Id started withs tt.
     */
-    async getRatings(id: string): Promise<RatingsData> {
+    async getRatings(id: string): Promise<RatingData> {
         // GET /{lang?}/API/Ratings/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/Ratings/${this.API_KEY}/${id}`;
-        let data = this.fetchData<RatingsData>('GET', URL);
+        let data = this.fetchData<RatingData>('GET', URL);
         console.log('Ratings: ' + data);
         return data;
     }
@@ -637,10 +244,10 @@ export class ImdbApiClient {
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     id	        Required	A valid IMDb Id. Id started withs tt.
     */
-    async getUserRatings(id: string): Promise<UserRatingsData> {
+    async getUserRatings(id: string): Promise<UserRatingData> {
         // GET /{lang?}/API/UserRatings/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/UserRatings/${this.API_KEY}/${id}`;
-        let data = this.fetchData<UserRatingsData>('GET', URL);
+        let data = this.fetchData<UserRatingData>('GET', URL);
         console.log('UserRatings: ' + data);
         return data;
     }
@@ -654,10 +261,10 @@ export class ImdbApiClient {
     id	            Required	A valid IMDb Id. Id started withs tt.
     seasonNumber	Required	Season number to get episodes.
     */
-    async getSeasonEpisodes(id: string, seasonNumber: string): Promise<SeasonEpisodesData> {
+    async getSeasonEpisodes(id: string, seasonNumber: string): Promise<SeasonEpisodeData> {
         // GET /{lang?}/API/SeasonEpisodes/{apiKey}/{id}/{seasonNumber}
         const URL = `${this.BASE_URL}/en/API/SeasonEpisodes/${this.API_KEY}/${id}/${seasonNumber}`;
-        let data = this.fetchData<SeasonEpisodesData>('GET', URL);
+        let data = this.fetchData<SeasonEpisodeData>('GET', URL);
         console.log('SeasonEpisodes: ' + data);
         return data;
     }
@@ -750,10 +357,10 @@ export class ImdbApiClient {
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     id	        Required	A valid IMDb Id. Id started withs tt.
     */
-    async getFaq(id: string): Promise<FaqData> {
+    async getFaq(id: string): Promise<FAQData> {
         // GET /{lang?}/API/FAQ/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/FAQ/${this.API_KEY}/${id}`;
-        let data = this.fetchData<FaqData>('GET', URL);
+        let data = this.fetchData<FAQData>('GET', URL);
         console.log('FAQ: ' + data);
         return data;
     }
@@ -766,10 +373,10 @@ export class ImdbApiClient {
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     id	        Required	A valid IMDb Id. Id started withs tt.
     */
-    async getAwards(id: string): Promise<AwardsData> {
+    async getAwards(id: string): Promise<AwardData> {
         // GET /{lang?}/API/Awards/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/Awards/${this.API_KEY}/${id}`;
-        let data = this.fetchData<AwardsData>('GET', URL);
+        let data = this.fetchData<AwardData>('GET', URL);
         console.log('Awards: ' + data);
         return data;
     }
@@ -783,10 +390,10 @@ export class ImdbApiClient {
     lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
-    async getTop250Movies():Promise<Top250Data> {
+    async getTop250Movies():Promise<MostPopularData> {
         // GET /{lang?}/API/Top250Movies/{apiKey}
         const URL = `${this.BASE_URL}/en/API/Top250Movies/${this.API_KEY}`;
-        let data = this.fetchData<Top250Data>('GET', URL);
+        let data = this.fetchData<MostPopularData>('GET', URL);
         console.log('Top250Movies: ' + data);
         return data;
     }
@@ -800,10 +407,10 @@ export class ImdbApiClient {
     lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
-    async getTop250TVs(): Promise<Top250Data> {
+    async getTop250TVs(): Promise<MostPopularData> {
         // GET /{lang?}/API/Top250TVs/{apiKey}
         const URL = `${this.BASE_URL}/en/API/Top250TVs/${this.API_KEY}`;
-        let data = this.fetchData<Top250Data>('GET', URL);
+        let data = this.fetchData<MostPopularData>('GET', URL);
         console.log('Top250TVs: ' + data);
         return data;
     }
@@ -815,10 +422,10 @@ export class ImdbApiClient {
     lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
-    async getMostPopularMovies(): Promise<Top250Data> {
+    async getMostPopularMovies(): Promise<MostPopularData> {
         // GET /{lang?}/API/MostPopularMovies/{apiKey}
         const URL = `${this.BASE_URL}/en/API/MostPopularMovies/${this.API_KEY}`;
-        let data = this.fetchData<Top250Data>('GET', URL);
+        let data = this.fetchData<MostPopularData>('GET', URL);
         console.log('MostPopularMovies: ' + data);
         return data;
     }
@@ -830,10 +437,10 @@ export class ImdbApiClient {
     lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
-    async getMostPopularTVs(): Promise<Top250Data> {
+    async getMostPopularTVs(): Promise<MostPopularData> {
         // GET /{lang?}/API/MostPopularTVs/{apiKey}
         const URL = `${this.BASE_URL}/en/API/MostPopularTVs/${this.API_KEY}`;
-        let data = this.fetchData<Top250Data>('GET', URL);
+        let data = this.fetchData<MostPopularData>('GET', URL);
         console.log('MostPopularTVs: ' + data);
         return data;
     }
@@ -922,10 +529,10 @@ export class ImdbApiClient {
     apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     id      	Required	A valid IMDb Name Id. Id started withs nm.
     */
-    async getNameAwards(id: string): Promise<NameAwardsData>{
+    async getNameAwards(id: string): Promise<NameAwardData>{
         // GET /{lang?}/API/NameAwards/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/NameAwards/${this.API_KEY}/${id}`;
-        let data = this.fetchData<NameAwardsData>('GET', URL);
+        let data = this.fetchData<NameAwardData>('GET', URL);
         console.log('NameAwards: ' + data);
         return data;
     }
@@ -1042,9 +649,208 @@ export class ImdbApiClient {
     }
 }
 
-export type ExternalSiteItem = {
-    id:	string;
-    url: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+export type InTheatersData = {
+  "items": [
+    {
+      "id": string;
+      "title": string;
+      "fullTitle": string;
+      "year": string;
+      "releaseState": string;
+      "image": string;
+      "runtimeMins": string;
+      "runtimeStr": string;
+      "plot": string;
+      "contentRating": string;
+      "imDbRating": string;
+      "imDbRatingCount": string;
+      "metacriticRating": string;
+      "genres": string;
+      "genreList": [
+        {
+          "key": string;
+          "value": string;
+        }
+      ],
+      "directors": string;
+      "directorList": [
+        {
+          "id": string;
+          "name": string;
+        }
+      ],
+      "stars": string;
+      "starList": [
+        {
+          "id": string;
+          "name": string;
+        }
+      ]
+    }
+  ],
+  "errorMessage": string;
+}
+
+
+
+export type BoxOfficeData = {
+  "items": [
+    {
+      "id": string;
+      "rank": string;
+      "title": string;
+      "image": string;
+      "weekend": string;
+      "gross": string;
+      "weeks": string;
+    }
+  ],
+  "errorMessage": string;
+}
+
+
+
+
+
+
+export type ActorShort = {
+    "id": string;
+    "image": string;
+    "name": string;
+    "asCharacter": string;
+}
+
+export type AwardData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "description": string;
+    "items": [AwardEvent],
+    "awardsHtml": string;
+    "errorMessage": string;
+}
+
+export type AwardEvent = {
+    "eventTitle": string;
+    "eventYear": string;
+    "outcomeItems": [AwardOutcome]
+}
+
+export type AwardOutcome = {
+    "outcomeTitle": string;
+    "outcomeCategory": string;
+    "outcomeDetails": [AwardOutcomeDetail]
+}
+
+export type AwardOutcomeDetail = {
+    "plainText": string;
+    "html": string;
+}
+
+export type BoxOfficeAllTimeData = {
+  "items": [BoxOfficeAllTimeDataDetail],
+  "errorMessage": string;
+}
+
+export type BoxOfficeAllTimeDataDetail = {
+    "id": string;
+    "rank": string;
+    "title": string;
+    "worldwideLifetimeGross": string;
+    "domesticLifetimeGross": string;
+    "domestic": string;
+    "foreignLifetimeGross": string;
+    "foreign": string;
+    "year": string;
+}
+
+export type BoxOfficeShort = {
+    "budget": string;
+    "openingWeekendUSA": string;
+    "grossUSA": string;
+    "cumulativeWorldwideGross": string;
+}
+
+export type BoxOfficeWeekendData = {
+    items: [BoxOfficeWeekendDataDetail];
+    errorMessage: string;
+}
+
+export type BoxOfficeWeekendDataDetail = {
+    id: string;
+    rank: string;
+    title: string;
+    image: string;
+    weekend: string;
+    gross: string;
+    weeks: string;
+}
+
+export type CastMovie = {
+    "id": string;
+    "role": string;
+    "title": string;
+    "year": string;
+    "description": string;
+}
+
+export type CastShort = {
+   "job": string;
+   "items": [CastShortItem];
+}
+
+export type CastShortItem = {
+   "id": string;
+   "name": string;
+   "description": string;
+}
+
+export type CompanyData = {
+    id: string;
+    name: string;
+    items: [ CompanyItem ];
+    errorMessage:string;
+}
+
+export type CompanyItem = {
+    id: string;
+    title: string;
+    year: string;
+    image: string;
+    imDbRating: string;
+}
+
+export type CompanyShort = {
+    "id": string;
+    "name": string;
+}
+
+export type EpisodeShortDetail = {
+   "id": string;
+   "seasonNumber": string;
+   "episodeNumber": string;
+   "title": string;
+   "image": string;
+   "year": string;
+   "released": string;
+   "plot": string;
+   "imDbRating": string;
+   "imDbRatingCount": string;
 }
 
 export type ExternalSitesData = {
@@ -1119,7 +925,7 @@ export type ExternalSitesData = {
     "sudocAuthorities": ExternalSiteItem;
     "bibliothequeNationaleDeFrance": ExternalSiteItem;
     "siamzone": ExternalSiteItem;
-    "academyAwardsDatabase": ExternalSiteItem;
+    "academyAwardDatabase": ExternalSiteItem;
     "knowYourMeme": ExternalSiteItem;
     "theEncyclopediaOfScienceFiction": ExternalSiteItem;
     "letterboxd": ExternalSiteItem;
@@ -1130,29 +936,38 @@ export type ExternalSitesData = {
     "errorMessage": string;
 }
 
-export type LanguageUrl = {
-    "language": string;
-    "title": string;
+export type ExternalSiteItem = {
+    "id":	string;
     "url": string;
 }
 
-export type WikipediaData = {
+export type FAQData = {
     "imDbId": string;
     "title": string;
     "fullTitle": string;
     "type": string;
     "year": string;
-    "language": string;
-    "titleInLanguage": string;
-    "url": string;
-    "plotShort": WikipediaPlotData;
-    "plotFull": WikipediaPlotData;
+    "items": [FAQDetail],
+    "spoilerItems": [FAQDetail],
     "errorMessage": string;
 }
 
-export type WikipediaPlotData = {
-    "plainText": string;
-    "html": string;
+export type FAQDetail = {
+    "question": string;
+    "answer": string;
+}
+
+export type FullCastData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "directors": CastShort;
+    "writers": CastShort;
+    "actors": [ActorShort];
+    "others": [CastShort];
+    "errorMessage": string;
 }
 
 export type IMDbListData = {
@@ -1177,6 +992,194 @@ export type IMDbListDataDetail = {
     "description": string;
 }
 
+export type ImageData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "items": [ImageDataItem];
+    "errorMessage": string;
+}
+
+export type ImageDataItem =  {
+    "title": string;
+    "image": string;
+}
+
+export type KeyValueItem = {
+    "key": string;
+    "value": string;
+}
+
+export type KeywordData = {
+    "keyword": string;
+    "items": [MovieShort];
+    "errorMessage": string;
+}
+
+export type KnownFor = {
+    "id": string;
+    "title": string;
+    "fullTitle": string;
+    "year": string;
+    "role": string;
+    "image": string;
+}
+
+export type LanguageUrl = {
+    "language": string;
+    "title": string;
+    "url": string;
+}
+
+export type MetacriticReviewData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "items": [MetacriticReviewDetail],
+    "errorMessage": string;
+}
+
+export type MetacriticReviewDetail = {
+    "publisher": string;
+    "author": string;
+    "link": string;
+    "rate": string;
+    "content": string;
+}
+
+export type MostPopularData = {
+    "items": [MostPopularDataDetail];
+    "errorMessage": string;
+}
+
+export type MostPopularDataDetail = {
+     "id": string;
+     "rank": string;
+     "title": string;
+     "fullTitle": string;
+     "year": string;
+     "image": string;
+     "crew": string;
+     "imDbRating": string;
+     "imDbRatingCount": string;
+}
+
+export type MovieShort = {
+    id: string;
+    title: string;
+    year: string;
+    image: string;
+    imDbRating: string;
+}
+
+export type NameAwardData = {
+    "imDbId": string;
+    "name": string;
+    "description": string;
+    "items": [
+        NameAwardEvent
+    ],
+    "nameAwardsHtml": string;
+    "errorMessage": string;
+}
+
+export type NameAwardEvent = {
+    "eventTitle": string;
+    "outcomeItems": [NameAwardOutcome];
+}
+
+export type NameAwardOutcome = {
+    "outcomeYear": string;
+    "outcomeTitle": string;
+    "outcomeCategory": string;
+    "outcomeDetails": [NameAwardOutcomeDetail];
+}
+
+export type NameAwardOutcomeDetail = {
+    "plainText": string;
+    "html": string;
+}
+
+export type NameData = {
+    "id": string;
+    "name": string;
+    "role": string;
+    "image": string;
+    "summary": string;
+    "birthDate": string;
+    "deathDate": string;
+    "awards": string;
+    "height": string;
+    "knownFor": [KnownFor],
+    "castMovies": [CastMovie],
+    "errorMessage": string;
+}
+
+export type NewMovieData = {
+    "items": [NewMovieDataDetail];
+    "errorMessage": string;
+}
+
+export type NewMovieDataDetail = {
+    "id": string;
+    "title": string;
+    "fullTitle": string;
+    "year": string;
+    "releaseState": string;
+    "image": string;
+    "runtimeMins": string;
+    "runtimeStr": string;
+    "plot": string;
+    "contentRating": string;
+    "imDbRating": string;
+    "imDbRatingCount": string;
+    "metacriticRating": string;
+    "genres": string;
+    "genreList": [KeyValueItem];
+    "directors": string;
+    "directorList": [StarShort];
+    "stars": string;
+    "starList":[StarShort];
+}
+
+export type PosterData = {
+  "imDbId": string;
+  "title": string;
+  "fullTitle": string;
+  "type": string;
+  "year": string;
+  "posters": [PosterDataItem];
+  "backdrops": [PosterDataItem];
+  "errorMessage": string;
+}
+
+export type PosterDataItem = {
+    "id": string;
+    "link": string;
+    "aspectRatio": number;
+    "language": string;
+    "width": number;
+    "height": number;
+}
+
+export type RatingData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "imDb": string;
+    "metacritic": string;
+    "theMovieDb": string;
+    "rottenTomatoes": string;
+    "filmAffinity": string;
+    "errorMessage": string;
+}
+
 export type ReviewData = {
     "imDbId": string;
     "title": string;
@@ -1199,100 +1202,94 @@ export type ReviewDetail = {
     "content": string;
 }
 
-export type MetacriticReviewDetail = {
-    "publisher": string;
-    "author": string;
-    "link": string;
-    "rate": string;
-    "content": string;
-}
-
-export type MetacriticReviewData = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "items": [MetacriticReviewDetail],
+export type SearchData = {
+    "searchType": string;
+    "expression": string;
+    "results": [SearchResult];
     "errorMessage": string;
-}
+};
 
-export type FaqData = {
-    "imDbId": string;
+export type SearchResult = {
+    "id": string;
+    "resultType": string;
+    "image": string;
     "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
-    "items": [
-        {
-              "question": string;
-              "answer": string;
-        }
-    ],
-    "spoilerItems": [
-        {
-            "question": string;
-            "answer": string;
-        }
-    ],
-    "errorMessage": string;
-}
-
-export type AwardsData = {
-    "imDbId": string;
-    "title": string;
-    "fullTitle": string;
-    "type": string;
-    "year": string;
     "description": string;
-    "items": [
-        {
-            "eventTitle": string;
-            "eventYear": string;
-            "outcomeItems": [
-                {
-                    "outcomeTitle": string;
-                    "outcomeCategory": string;
-                    "outcomeDetails": [
-                        {
-                            "plainText": string;
-                            "html": string;
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    "awardsHtml": string;
+}
+
+export type SeasonEpisodeData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "episodes": [EpisodeShortDetail];
     "errorMessage": string;
 }
 
-export type NameAwardsData = {
-    "imDbId": string;
+export type SimilarShort = {
+    "id": string;
+    "title": string;
+    "image": string;
+    "imDbRating": string;
+}
+
+
+export type StarShort = {
+    "id":	string;
     "name": string;
-    "description": string;
-    "items": [
-        {
-            "eventTitle": string;
-            "outcomeItems": [
-                {
-                    "outcomeYear": string;
-                    "outcomeTitle": string;
-                    "outcomeCategory": string;
-                    "outcomeDetails": [
-                        {
-                            "plainText": string;
-                            "html": string;
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    "nameAwardsHtml": string;
-    "errorMessage": string;
 }
 
+
+export type TitleData = {
+    "id": string;
+    "title": string;
+    "originalTitle": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "image": string;
+    "releaseDate": string;
+    "runtimeMins": string;
+    "runtimeStr": string;
+    "plot": string;
+    "plotLocal": string;
+    "plotLocalIsRtl": boolean;
+    "awards": string;
+    "directors": string;
+    "directorList": [StarShort];
+    "writers": string;
+    "writerList": [StarShort];
+    "stars": string;
+    "starList": [StarShort];
+    "actorList": [ActorShort];
+    "fullCast": FullCastData;
+    "genres": string;
+    "genreList": [KeyValueItem];
+    "companies": string;
+    "companyList": [CompanyShort];
+    "countries": string;
+    "countryList": [KeyValueItem];
+    "languages": string;
+    "languageList": [KeyValueItem];
+    "contentRating": string;
+    "imDbRating": string;
+    "imDbRatingVotes": string;
+    "metacriticRating": string;
+    "ratings": RatingData;
+    "wikipedia": WikipediaData;
+    "posters": PosterData;
+    "images": ImageData;
+    "trailer": TrailerData;
+    "boxOffice": BoxOfficeShort;
+    "tagline": string;
+    "keywords": string;
+    "keywordList": [string];
+    "similars": [SimilarShort];
+    "tvSeriesInfo": TvSeriesInfo;
+    "tvEpisodeInfo": TvEpisodeInfo;
+    "errorMessage": string;
+}
 
 export type Top250Data = {
     "items": [Top250DataDetail];
@@ -1300,126 +1297,124 @@ export type Top250Data = {
 }
 
 export type Top250DataDetail = {
-     "id": string;
-     "rank": string;
-     "title": string;
-     "fullTitle": string;
-     "year": string;
-     "image": string;
-     "crew": string;
-     "imDbRating": string;
-     "imDbRatingCount": string;
+    "id": string;
+    "rank": string;
+    "title": string;
+    "fullTitle": string;
+    "year": string;
+    "image": string;
+    "crew": string;
+    "imDbRating": string;
+    "imDbRatingCount": string;
 }
 
-export type InTheatersData = {
-  "items": [
-    {
-      "id": string;
-      "title": string;
-      "fullTitle": string;
-      "year": string;
-      "releaseState": string;
-      "image": string;
-      "runtimeMins": string;
-      "runtimeStr": string;
-      "plot": string;
-      "contentRating": string;
-      "imDbRating": string;
-      "imDbRatingCount": string;
-      "metacriticRating": string;
-      "genres": string;
-      "genreList": [
-        {
-          "key": string;
-          "value": string;
-        }
-      ],
-      "directors": string;
-      "directorList": [
-        {
-          "id": string;
-          "name": string;
-        }
-      ],
-      "stars": string;
-      "starList": [
-        {
-          "id": string;
-          "name": string;
-        }
-      ]
-    }
-  ],
-  "errorMessage": string;
+export type TrailerData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "videoId": string;
+    "videoTitle": string;
+    "videoDescription": string;
+    "thumbnailUrl": string;
+    "uploadDate": string;
+    "link": string;
+    "linkEmbed": string;
+    "errorMessage": string;
 }
 
-export type BoxOfficeShort = {
-    "budget": string;
-    "openingWeekendUSA": string;
-    "grossUSA": string;
-    "cumulativeWorldwideGross": string;
+export type TvEpisodeInfo = {
+    "seriesId": string;
+    "seriesTitle": string;
+    "seriesFullTitle": string;
+    "seriesYear": string;
+    "seriesYearEnd": string;
+    "seasonNumber": string;
+    "episodeNumber": string;
+    "previousEpisodeId": string;
+    "nextEpisodeId": string;
 }
 
-export type BoxOfficeData = {
-  "items": [
-    {
-      "id": string;
-      "rank": string;
-      "title": string;
-      "image": string;
-      "weekend": string;
-      "gross": string;
-      "weeks": string;
-    }
-  ],
-  "errorMessage": string;
+export type TvSeriesInfo = {
+    "yearEnd": string;
+    "creators": string;
+    "creatorList": [StarShort];
+    "seasons": [string];
 }
 
-export type BoxOfficeAllTimeData = {
-  "items": [
-    {
-      "id": string;
-      "rank": string;
-      "title": string;
-      "worldwideLifetimeGross": string;
-      "domesticLifetimeGross": string;
-      "domestic": string;
-      "foreignLifetimeGross": string;
-      "foreign": string;
-      "year": string;
-    }
-  ],
-  "errorMessage": string;
+export type UsageData = {
+    "count": number;
+    "maximum": number;
+    "account": string;
+    "expireDate": string;
+    "errorMessage": string;
 }
 
-export type NameData = {
-  "id": string;
-  "name": string;
-  "role": string;
-  "image": string;
-  "summary": string;
-  "birthDate": string;
-  "deathDate": string;
-  "awards": string;
-  "height": string;
-  "knownFor": [
-    {
-      "id": string;
-      "title": string;
-      "fullTitle": string;
-      "year": string;
-      "role": string;
-      "image": string;
-    }
-  ],
-  "castMovies": [
-    {
-      "id": string;
-      "role": string;
-      "title": string;
-      "year": string;
-      "description": string;
-    }
-  ],
-  "errorMessage": string;
+
+export type UserRatingData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "totalRating": string;
+    "totalRatingVotes": string;
+    "ratings": [UserRatingDataDetail];
+    "demographicAll": UserRatingDataDemographic;
+    "demographicMales": UserRatingDataDemographic;
+    "demographicFemales": UserRatingDataDemographic;
+    "top1000Voters": UserRatingDataDemographicDetail;
+    "usUsers": UserRatingDataDemographicDetail;
+    "nonUSUsers": UserRatingDataDemographicDetail;
+    "errorMessage": string;
+}
+
+export type UserRatingDataDemographic = {
+    "allAges": UserRatingDataDemographicDetail;
+    "agesUnder18": UserRatingDataDemographicDetail;
+    "ages18To29": UserRatingDataDemographicDetail;
+    "ages30To44": UserRatingDataDemographicDetail;
+    "agesOver45": UserRatingDataDemographicDetail;
+}
+
+export type UserRatingDataDemographicDetail = {
+    "rating":	string;
+    "votes":	string;
+}
+
+export type UserRatingDataDetail = {
+    "rating":	string;
+    "percent": string;
+    "votes": string;
+}
+
+export type WikipediaData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "language": string;
+    "titleInLanguage": string;
+    "url": string;
+    "plotShort": WikipediaDataPlot;
+    "plotFull": WikipediaDataPlot;
+    "errorMessage": string;
+}
+
+export type WikipediaDataPlot = {
+    "plainText": string;
+    "html": string;
+}
+
+export type YouTubeTrailerData = {
+    "imDbId": string;
+    "title": string;
+    "fullTitle": string;
+    "type": string;
+    "year": string;
+    "videoId": string;
+    "videoUrl": string;
+    "errorMessage": string;
 }
