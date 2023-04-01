@@ -20,7 +20,7 @@ export class ImdbApiClient {
     */
     async search(expression: string) : Promise<SearchData> {
         const URL = `${this.BASE_URL}/en/API/search/${this.API_KEY}/${expression}`;
-        let data = await this.fetchData<SearchData>('GET', URL);
+        const data = await this.fetchData<SearchData>('GET', URL);
         console.log('search: ' + data);
         return data;
     }
@@ -36,7 +36,7 @@ export class ImdbApiClient {
     */
     async searchTitle(expression: string): Promise<SearchData> {
         const URL = `${this.BASE_URL}/en/API/SearchTitle/${this.API_KEY}/${expression}`;
-        let data = await this.fetchData<SearchData>('GET', URL);
+        const data = await this.fetchData<SearchData>('GET', URL);
         console.log('searchTitle: ' + data);
         return data;
     }
@@ -52,7 +52,7 @@ export class ImdbApiClient {
     */
     async searchMovie(expression: string): Promise<SearchData> {
         const URL = `${this.BASE_URL}/en/API/SearchMovie/${this.API_KEY}/${expression}`;
-        let data = await this.fetchData<SearchData>('GET', URL);
+        const data = await this.fetchData<SearchData>('GET', URL);
         console.log('searchMovie: ' + data);
         return data;
     }
@@ -68,7 +68,7 @@ export class ImdbApiClient {
     */
     async searchSeries(expression: string): Promise<SearchData> {
         const URL = `${this.BASE_URL}/en/API/SearchSeries/${this.API_KEY}/${expression}`;
-        let data = this.fetchData<SearchData>('GET', URL);
+        const data = this.fetchData<SearchData>('GET', URL);
         console.log('searchSeries: ' + data);
         return data;
     }
@@ -84,7 +84,7 @@ export class ImdbApiClient {
     */
     async searchName(expression: string): Promise<SearchData> {
         const URL = `${this.BASE_URL}/en/API/SearchName/${this.API_KEY}/${expression}`;
-        let data = this.fetchData<SearchData>('GET', URL);
+        const data = this.fetchData<SearchData>('GET', URL);
         console.log('searchName: ' + data);
         return data;
     }
@@ -99,7 +99,7 @@ export class ImdbApiClient {
     */
     async searchEpisode(expression: string): Promise<SearchData> {
         const URL = `${this.BASE_URL}/en/API/SearchEpisode/${this.API_KEY}/${expression}`;
-        let data = this.fetchData<SearchData>('GET', URL);
+        const data = this.fetchData<SearchData>('GET', URL);
         console.log('searchEpisode: ' + data);
         return data;
     }
@@ -113,9 +113,8 @@ export class ImdbApiClient {
         expression	Required	Expression for search.
     */
     async searchCompany(expression: string): Promise<SearchData> {
-        // GET /{lang?}/API/SearchCompany/{apiKey}/{expression}
         const URL = `${this.BASE_URL}/en/API/SearchCompany/${this.API_KEY}/${expression}`;
-        let data = this.fetchData<SearchData>('GET', URL);
+        const data = this.fetchData<SearchData>('GET', URL);
         console.log('searchCompany: ' + data);
         return data;
     }
@@ -129,9 +128,8 @@ export class ImdbApiClient {
         expression	Required	Expression for search.
     */
     async searchKeyword(expression: string): Promise<SearchData> {
-        // GET /{lang?}/API/SearchKeyword/{apiKey}/{expression}
         const URL = `${this.BASE_URL}/en/API/SearchKeyword/${this.API_KEY}/${expression}`;
-        let data = this.fetchData<SearchData>('GET', URL);
+        const data = this.fetchData<SearchData>('GET', URL);
         console.log('searchKeyword: ' + data);
         return data;
     }
@@ -145,9 +143,8 @@ export class ImdbApiClient {
         expression	Required	Expression for search.
     */
     async searchAll(expression: string): Promise<SearchData> {
-        // GET /{lang?}/API/SearchAll/{apiKey}/{expression}
         const URL = `${this.BASE_URL}/en/API/SearchAll/${this.API_KEY}/${expression}`;
-        let data = this.fetchData<SearchData>('GET', URL);
+        const data = this.fetchData<SearchData>('GET', URL);
         console.log('SearchAll: ' + data);
         return data;
     }
@@ -175,9 +172,8 @@ export class ImdbApiClient {
         options 	Optional	Options to get more information about: FullActor, FullCast, Posters, Images, Trailer, Ratings, Wikipedia.
     */
     async getTitle(lang: string, id: string, options: string): Promise<TitleData> {
-        // GET /{lang?}/API/Title/{apiKey}/{id}/{options?}
         const URL = `${this.BASE_URL}/${lang}/API/Title/${this.API_KEY}/${id}/${options}`;
-        let data = this.fetchData<TitleData>('GET', URL);
+        const data = this.fetchData<TitleData>('GET', URL);
         console.log('TitleData: ' + data);
         return data;
     }
@@ -194,9 +190,8 @@ export class ImdbApiClient {
         TODO this returns a PNG image. Don't know what to do here!!!
     */
     async getReport(lang: string, id: string, options: string): Promise<object> {
-        // GET /{lang?}/API/Report/{apiKey}/{id}/{options?}
         const URL = `${this.BASE_URL}/${lang}/API/Report/${this.API_KEY}/${id}/${options}`;
-        let data = this.fetchData<object>('GET', URL);
+        const data = this.fetchData<object>('GET', URL);
         console.log('Report: ' + data);
         return data;
     }
@@ -210,9 +205,8 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getFullCast(id: string): Promise<FullCastData>{
-        // GET /{lang?}/API/FullCast/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/FullCast/${this.API_KEY}/${id}`;
-        let data = this.fetchData<FullCastData>('GET', URL);
+        const data = this.fetchData<FullCastData>('GET', URL);
         console.log('Report: ' + data);
         return data;
     }
@@ -226,9 +220,8 @@ export class ImdbApiClient {
         id      	Required	A valid IMDb Id. Id started withs tt.
     */
     async getPosters(id: string): Promise<PosterData> {
-        // GET /{lang?}/API/Posters/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/Posters/${this.API_KEY}/${id}`;
-        let data = this.fetchData<PosterData>('GET', URL);
+        const data = this.fetchData<PosterData>('GET', URL);
         console.log('Report: ' + data);
         return data;
     }
@@ -243,9 +236,8 @@ export class ImdbApiClient {
         options	    Optional	Options can Short (default) or Full. Short parameter contains 48 images. Full parameter (tt only) contains all available images.
     */
     async getImages(id: string, options: string): Promise<ImageData>{
-        // GET /{lang?}/API/Images/{apiKey}/{id}/{options?}
         const URL = `${this.BASE_URL}/en/API/Images/${this.API_KEY}/${id}/${options}`;
-        let data = this.fetchData<ImageData>('GET', URL);
+        const data = this.fetchData<ImageData>('GET', URL);
         console.log('Images: ' + data);
         return data;
     }
@@ -259,9 +251,8 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb Id. Id started withs tt.
     */
      async getTrailer(id: string): Promise<TrailerData>{
-        // GET /{lang?}/API/Trailer/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/Trailer/${this.API_KEY}/${id}`;
-        let data = this.fetchData<TrailerData>('GET', URL);
+        const data = this.fetchData<TrailerData>('GET', URL);
         console.log('Trailer: ' + data);
         return data;
     }
@@ -275,25 +266,23 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getRatings(id: string): Promise<RatingData> {
-        // GET /{lang?}/API/Ratings/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/Ratings/${this.API_KEY}/${id}`;
-        let data = this.fetchData<RatingData>('GET', URL);
+        const data = this.fetchData<RatingData>('GET', URL);
         console.log('Ratings: ' + data);
         return data;
     }
 
     /*
-    Get user ratings of Movie or Series TV with count of votes and details.
+        Get user ratings of Movie or Series TV with count of votes and details.
 
-    PARAMETERS	REQUIRED	DESCRIPTION
-    lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
-    apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
-    id	        Required	A valid IMDb Id. Id started withs tt.
+        PARAMETERS	REQUIRED	DESCRIPTION
+        lang	    Optional	Language of results. Default value is "en" (English). Language change is not important in this action.
+        apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
+        id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getUserRatings(id: string): Promise<UserRatingData> {
-        // GET /{lang?}/API/UserRatings/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/UserRatings/${this.API_KEY}/${id}`;
-        let data = this.fetchData<UserRatingData>('GET', URL);
+        const data = this.fetchData<UserRatingData>('GET', URL);
         console.log('UserRatings: ' + data);
         return data;
     }
@@ -308,9 +297,8 @@ export class ImdbApiClient {
         seasonNumber	Required	Season number to get episodes.
     */
     async getSeasonEpisodes(id: string, seasonNumber: string): Promise<SeasonEpisodeData> {
-        // GET /{lang?}/API/SeasonEpisodes/{apiKey}/{id}/{seasonNumber}
         const URL = `${this.BASE_URL}/en/API/SeasonEpisodes/${this.API_KEY}/${id}/${seasonNumber}`;
-        let data = this.fetchData<SeasonEpisodeData>('GET', URL);
+        const data = this.fetchData<SeasonEpisodeData>('GET', URL);
         console.log('SeasonEpisodes: ' + data);
         return data;
     }
@@ -324,9 +312,8 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getExternalSites(id: string): Promise<ExternalSiteData> {
-        // GET /{lang?}/API/ExternalSites/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/ExternalSites/${this.API_KEY}/${id}`;
-        let data = this.fetchData<ExternalSiteData>('GET', URL);
+        const data = this.fetchData<ExternalSiteData>('GET', URL);
         console.log('ExternalSites: ' + data);
         return data;
     }
@@ -340,9 +327,8 @@ export class ImdbApiClient {
         id	    Required	A valid IMDb Id. Id started withs tt.
     */
     async getWikipedia(id: string, lang: string): Promise<WikipediaData> {
-        // GET /{lang?}/API/Wikipedia/{apiKey}/{id}
         const URL = `${this.BASE_URL}/${lang}/API/Wikipedia/${this.API_KEY}/${id}`;
-        let data = this.fetchData<WikipediaData>('GET', URL);
+        const data = this.fetchData<WikipediaData>('GET', URL);
         console.log('Wikipedia: ' + data);
         return data;
     }
@@ -356,9 +342,8 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb List Id. Id started withs ls.
     */
     async getIMDbList(id: string): Promise<IMDbListData> {
-        // GET /{lang?}/API/IMDbList/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/IMDbList/${this.API_KEY}/${id}`;
-        let data = this.fetchData<IMDbListData>('GET', URL);
+        const data = this.fetchData<IMDbListData>('GET', URL);
         console.log('IMDbList: ' + data);
         return data;
     }
@@ -372,9 +357,8 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getReviews(id: string): Promise<ReviewData> {
-        // GET /{lang?}/API/Reviews/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/Reviews/${this.API_KEY}/${id}`;
-        let data = this.fetchData<ReviewData>('GET', URL);
+        const data = this.fetchData<ReviewData>('GET', URL);
         console.log('Reviews: ' + data);
         return data;
     }
@@ -388,9 +372,8 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getMetacriticReviews(id: string): Promise<MetacriticReviewData> {
-        // GET /{lang?}/API/MetacriticReviews/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/MetacriticReviews/${this.API_KEY}/${id}`;
-        let data = this.fetchData<MetacriticReviewData>('GET', URL);
+        const data = this.fetchData<MetacriticReviewData>('GET', URL);
         console.log('MetacriticReviews: ' + data);
         return data;
     }
@@ -404,9 +387,8 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getFaq(id: string): Promise<FAQData> {
-        // GET /{lang?}/API/FAQ/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/FAQ/${this.API_KEY}/${id}`;
-        let data = this.fetchData<FAQData>('GET', URL);
+        const data = this.fetchData<FAQData>('GET', URL);
         console.log('FAQ: ' + data);
         return data;
     }
@@ -420,9 +402,8 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb Id. Id started withs tt.
     */
     async getAwards(id: string): Promise<AwardData> {
-        // GET /{lang?}/API/Awards/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/Awards/${this.API_KEY}/${id}`;
-        let data = this.fetchData<AwardData>('GET', URL);
+        const data = this.fetchData<AwardData>('GET', URL);
         console.log('Awards: ' + data);
         return data;
     }
@@ -437,14 +418,11 @@ export class ImdbApiClient {
         apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getTop250Movies():Promise<Top250Data> {
-        // GET /{lang?}/API/Top250Movies/{apiKey}
         const URL = `${this.BASE_URL}/en/API/Top250Movies/${this.API_KEY}`;
-        let data = this.fetchData<Top250Data>('GET', URL);
+        const data = this.fetchData<Top250Data>('GET', URL);
         console.log('Top250Movies: ' + data);
         return data;
     }
-
-
 
     /*
         Get Top 250 Series TVs.
@@ -454,9 +432,8 @@ export class ImdbApiClient {
         apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getTop250TVs(): Promise<Top250Data> {
-        // GET /{lang?}/API/Top250TVs/{apiKey}
         const URL = `${this.BASE_URL}/en/API/Top250TVs/${this.API_KEY}`;
-        let data = this.fetchData<Top250Data>('GET', URL);
+        const data = this.fetchData<Top250Data>('GET', URL);
         console.log('Top250TVs: ' + data);
         return data;
     }
@@ -469,9 +446,8 @@ export class ImdbApiClient {
         apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getMostPopularMovies(): Promise<MostPopularData> {
-        // GET /{lang?}/API/MostPopularMovies/{apiKey}
         const URL = `${this.BASE_URL}/en/API/MostPopularMovies/${this.API_KEY}`;
-        let data = this.fetchData<MostPopularData>('GET', URL);
+        const data = this.fetchData<MostPopularData>('GET', URL);
         console.log('MostPopularMovies: ' + data);
         return data;
     }
@@ -484,9 +460,8 @@ export class ImdbApiClient {
         apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getMostPopularTVs(): Promise<MostPopularData> {
-        // GET /{lang?}/API/MostPopularTVs/{apiKey}
         const URL = `${this.BASE_URL}/en/API/MostPopularTVs/${this.API_KEY}`;
-        let data = this.fetchData<MostPopularData>('GET', URL);
+        const data = this.fetchData<MostPopularData>('GET', URL);
         console.log('MostPopularTVs: ' + data);
         return data;
     }
@@ -499,9 +474,8 @@ export class ImdbApiClient {
         apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getInTheaters(): Promise<NewMovieData> {
-        // GET /{lang?}/API/InTheaters/{apiKey
         const URL = `${this.BASE_URL}/en/API/InTheaters/${this.API_KEY}`;
-        let data = this.fetchData<NewMovieData>('GET', URL);
+        const data = this.fetchData<NewMovieData>('GET', URL);
         console.log('InTheaters: ' + data);
         return data;
     }
@@ -514,9 +488,8 @@ export class ImdbApiClient {
         apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getComingSoon(): Promise<NewMovieData> {
-        // GET /{lang?}/API/ComingSoon/{apiKey}
         const URL = `${this.BASE_URL}/en/API/ComingSoon/${this.API_KEY}`;
-        let data = this.fetchData<NewMovieData>('GET', URL);
+        const data = this.fetchData<NewMovieData>('GET', URL);
         console.log('ComingSoon: ' + data);
         return data;
     }
@@ -529,9 +502,8 @@ export class ImdbApiClient {
         apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getBoxOffice(): Promise<BoxOfficeWeekendData> {
-        // GET /{lang?}/API/BoxOffice/{apiKey}
         const URL = `${this.BASE_URL}/en/API/BoxOffice/${this.API_KEY}`;
-        let data = this.fetchData<BoxOfficeWeekendData>('GET', URL);
+        const data = this.fetchData<BoxOfficeWeekendData>('GET', URL);
         console.log('BoxOffice: ' + data);
         return data;
     }
@@ -544,9 +516,8 @@ export class ImdbApiClient {
         apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
     */
     async getBoxOfficeAllTime(): Promise<BoxOfficeAllTimeData> {
-        // GET /{lang?}/API/BoxOfficeAllTime/{apiKey}
         const URL = `${this.BASE_URL}/en/API/BoxOfficeAllTime/${this.API_KEY}`;
-        let data = this.fetchData<BoxOfficeAllTimeData>('GET', URL);
+        const data = this.fetchData<BoxOfficeAllTimeData>('GET', URL);
         console.log('BoxOfficeAllTime: ' + data);
         return data;
     }
@@ -560,9 +531,8 @@ export class ImdbApiClient {
         id	        Required	A valid IMDb Name Id. Id startd withs nm.
     */
     async getName(id: string): Promise<NameData> {
-        // GET /{lang?}/API/Name/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/Name/${this.API_KEY}/${id}`;
-        let data = this.fetchData<NameData>('GET', URL);
+        const data = this.fetchData<NameData>('GET', URL);
         console.log('Name: ' + data);
         return data;
     }
@@ -576,9 +546,8 @@ export class ImdbApiClient {
         id      	Required	A valid IMDb Name Id. Id started withs nm.
     */
     async getNameAwards(id: string): Promise<NameAwardData>{
-        // GET /{lang?}/API/NameAwards/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/NameAwards/${this.API_KEY}/${id}`;
-        let data = this.fetchData<NameAwardData>('GET', URL);
+        const data = this.fetchData<NameAwardData>('GET', URL);
         console.log('NameAwards: ' + data);
         return data;
     }
@@ -593,7 +562,7 @@ export class ImdbApiClient {
     */
     async getCompany(id: string): Promise<CompanyData> {
         const URL = `${this.BASE_URL}/en/API/Company/${this.API_KEY}/${id}`;
-        let data = this.fetchData<CompanyData>('GET', URL);
+        const data = this.fetchData<CompanyData>('GET', URL);
         console.log('Company: ' + data);
         return data;
     }
@@ -608,7 +577,7 @@ export class ImdbApiClient {
     */
     async getKeyword(id: string): Promise<KeywordData> {
         const URL = `${this.BASE_URL}/en/API/Keyword/${this.API_KEY}/${id}`;
-        let data = this.fetchData<KeywordData>('GET', URL);
+        const data = this.fetchData<KeywordData>('GET', URL);
         console.log('Keyword: ' + data);
         return data;
     }
@@ -622,14 +591,10 @@ export class ImdbApiClient {
     */
     async getYouTubeTrailer(id: string): Promise<YouTubeTrailerData> {
         const URL = `${this.BASE_URL}/en/API/YouTubeTrailer/${this.API_KEY}/${id}`;
-        let data = this.fetchData<YouTubeTrailerData>('GET', URL);
+        const data = this.fetchData<YouTubeTrailerData>('GET', URL);
         console.log('YouTubeTrailer: ' + data);
         return data;
     }
-
-
-
-    // Tools
 
     /*
         View the number of daily uses of the services..
@@ -637,7 +602,7 @@ export class ImdbApiClient {
     */
     async getUsage(): Promise<UsageData> {
         const URL = `${this.BASE_URL}/API/Usage/${this.API_KEY}`;
-        let data = this.fetchData<UsageData>('GET', URL);
+        const data = this.fetchData<UsageData>('GET', URL);
         console.log('Usage: ' + data);
         return data;
     }
@@ -645,16 +610,15 @@ export class ImdbApiClient {
     /*
         apiKey	Required	API Key required for all API calls. Register on site to get free API Key.
         size	Required	Size of Image. Examples: 8x11, 16x22, 32x44, 64x88, ... (Width x Height)
-        url	Required	URL of Image.
+        url	    Required	URL of Image.
         RESULT	URL Of JPG Image
     */
     async resizeImage(size: string, url: string): Promise<string> {
         const URL = `${this.BASE_URL}/API/ResizeImage?apikey=${this.API_KEY}&size=${size}&url=${url}`;
-        let data = this.fetchData<string>('GET', URL);
+        const data = this.fetchData<string>('GET', URL);
         console.log('ResizeImage: ' + data);
         return data;
     }
-
 
     /*
         Get Image by size.
@@ -666,7 +630,7 @@ export class ImdbApiClient {
     */
     async resizePoster(size: string, url: string): Promise<string> {
         const URL = `${this.BASE_URL}/API/resizePoster?apikey=${this.API_KEY}&size=${size}&url=${url}`;
-        let data = this.fetchData<string>('GET', URL);
+        const data = this.fetchData<string>('GET', URL);
         console.log('resizePoster: ' + data);
         return data;
     }
@@ -675,17 +639,12 @@ export class ImdbApiClient {
     method:  *GET, POST, PUT, DELETE, etc.
     */
     private async fetchData<T>(method: string, url: string): Promise<T>  {
-        console.log('method: ' + method);
-        console.log('url:    ' + url);
-
         let response = await fetch(url);
         if (!response.ok) {
             throw Error("...");
         }
 
         const data: T = await response.json();
-
-        console.log(data);
         return data;
     }
 }

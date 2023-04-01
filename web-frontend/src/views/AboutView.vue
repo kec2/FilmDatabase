@@ -34,7 +34,6 @@ export default {
 
 <template>
   <div class="about">
-    ${process.env.VUE_APP_IMDB_API_KEY}
     <h1>Search for a movie</h1><p>
     <input type="text" v-model="title" placeholder="title">
     <input type="button" :value="$t('search.search')" v-on:click="fetchData()">
