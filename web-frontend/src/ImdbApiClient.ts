@@ -1,6 +1,7 @@
 "use strict";
 
 export class ImdbApiClient {
+    private API_KEY = process.env.VUE_APP_IMDB_API_KEY;
     private BASE_URL: string = 'https://imdb-api.com';
     private LANG: string = 'en';
 
