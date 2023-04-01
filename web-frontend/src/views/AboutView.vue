@@ -14,18 +14,18 @@ import { ImdbApiClient, type SearchData, type SearchResult } from '../ImdbApiCli
 
 export default {
   data: () => ({
-    SearchData: {} as SearchData,
+    searchData: {} as SearchData,
     title: '',
     searchFor: 'searchMovie',
-    imdb: new ImdbApiClient()
+    imdb: new ImdbApiClient(import.meta.env.VITE_IMDB_API_KEY)
   }),
 
   methods: {
     async fetchData() {
         if (this.searchFor == 'searchMovie') {
-            this.SearchData = await this.imdb.searchMovie(`${this.title}`)
+            this.searchData = await this.imdb.searchMovie(`${this.title}`)
         } else if (this.searchFor == 'searchSeries') {
-            this.SearchData = await this.imdb.searchSeries(`${this.title}`)
+            this.searchData = await this.imdb.searchSeries(`${this.title}`)
         }
     }
   }
@@ -34,6 +34,7 @@ export default {
 
 <template>
   <div class="about">
+    ${process.env.VUE_APP_IMDB_API_KEY}
     <h1>Search for a movie</h1><p>
     <input type="text" v-model="title" placeholder="title">
     <input type="button" :value="$t('search.search')" v-on:click="fetchData()">
@@ -46,14 +47,14 @@ export default {
     </p>
   </div>
 
-    <div v-if="SearchData">
+    <div v-if="searchData">
         <h2>Search</h2>
-        type: {{ SearchData.searchType }}<br>
-        expression: {{ SearchData.expression }}<br>
-        errors: {{ SearchData.errorMessage }}<br>
+        type: {{ searchData.searchType }}<br>
+        expression: {{ searchData.expression }}<br>
+        errors: {{ searchData.errorMessage }}<br>
     </div><br>
 
-    <div v-for="{ id, image, title, description } in SearchData.results">
+    <div v-for="{ id, image, title, description } in searchData.results">
        <div>
         <img :alt="title" :src="image" width="150" hsdeight="150"
             style="float: left; margin: 0 15px 15px 0; aspect-ratio: 0.6757;"/>

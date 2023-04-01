@@ -1,9 +1,13 @@
 "use strict";
 
 export class ImdbApiClient {
-    private API_KEY = process.env.VUE_APP_IMDB_API_KEY;
+    private API_KEY: string;
     private BASE_URL: string = 'https://imdb-api.com';
     private LANG: string = 'en';
+
+    constructor(api_key: string) {
+        this.API_KEY = api_key;
+    }
 
     /*
         Search is same as SearchTitle, search into all titles. It is recommended to use SearchMovie or SearchSeries to search for a movie or series.
@@ -319,10 +323,10 @@ export class ImdbApiClient {
         apiKey	    Required	API Key required for all API calls. Register on site to get free API Key.
         id	        Required	A valid IMDb Id. Id started withs tt.
     */
-    async getExternalSites(id: string): Promise<"ExternalSiteData> {
+    async getExternalSites(id: string): Promise<ExternalSiteData> {
         // GET /{lang?}/API/ExternalSites/{apiKey}/{id}
         const URL = `${this.BASE_URL}/en/API/ExternalSites/${this.API_KEY}/${id}`;
-        let data = this.fetchData<"ExternalSiteData>('GET', URL);
+        let data = this.fetchData<ExternalSiteData>('GET', URL);
         console.log('ExternalSites: ' + data);
         return data;
     }
