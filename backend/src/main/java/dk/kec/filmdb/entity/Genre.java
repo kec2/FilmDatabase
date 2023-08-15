@@ -8,18 +8,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Data
-@EqualsAndHashCode(callSuper = false)
-@Entity
-@EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Genre extends Auditing {
 
     @Id
@@ -29,3 +29,5 @@ public class Genre extends Auditing {
     @Column(unique = true, nullable = false)
     private String name; // Horror, Action, ...
 }
+
+
