@@ -3,7 +3,6 @@ package dk.kec.filmdb.service;
 import dk.kec.filmdb.entity.MediaType;
 import dk.kec.filmdb.repository.MediaTypeRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @Slf4j
 public class MediaTypeService {
 
-    @Autowired
-    private MediaTypeRepository repository;
+    private final MediaTypeRepository repository;
+
+    public MediaTypeService(MediaTypeRepository repository) {
+        this.repository = repository;
+    }
 
     public List<MediaType> getMediaTypes() {
         return repository.findAll();

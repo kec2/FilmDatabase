@@ -3,7 +3,6 @@ package dk.kec.filmdb.controller;
 import dk.kec.filmdb.entity.Owner;
 import dk.kec.filmdb.service.OwnerService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +21,11 @@ import java.util.List;
 @RequestMapping("/owner")
 public class OwnerController {
 
-    @Autowired
-    private OwnerService service;
+    private final OwnerService service;
+
+    public OwnerController(OwnerService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<Owner>> getOwners() {

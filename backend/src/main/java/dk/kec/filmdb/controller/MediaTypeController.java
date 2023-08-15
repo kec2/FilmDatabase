@@ -3,7 +3,6 @@ package dk.kec.filmdb.controller;
 import dk.kec.filmdb.entity.MediaType;
 import dk.kec.filmdb.service.MediaTypeService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +21,11 @@ import java.util.List;
 @RequestMapping("/mediaType")
 public class MediaTypeController {
 
-    @Autowired
-    private MediaTypeService service;
+    private final MediaTypeService service;
+
+    public MediaTypeController(MediaTypeService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<MediaType>> getMediaTypes() {

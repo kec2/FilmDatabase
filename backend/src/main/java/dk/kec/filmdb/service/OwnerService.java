@@ -3,7 +3,6 @@ package dk.kec.filmdb.service;
 import dk.kec.filmdb.entity.Owner;
 import dk.kec.filmdb.repository.OwnerRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @Slf4j
 public class OwnerService {
 
-    @Autowired
-    private OwnerRepository repository;
+    private final OwnerRepository repository;
+
+    public OwnerService(OwnerRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Owner> getOwners() {
         return repository.findAll();

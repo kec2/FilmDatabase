@@ -3,7 +3,6 @@ package dk.kec.filmdb.service;
 import dk.kec.filmdb.entity.Genre;
 import dk.kec.filmdb.repository.GenreRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @Slf4j
 public class GenreService {
 
-    @Autowired
-    private GenreRepository repository;
+    private final GenreRepository repository;
+
+    public GenreService(GenreRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Genre> getGenres() {
         return repository.findAll();

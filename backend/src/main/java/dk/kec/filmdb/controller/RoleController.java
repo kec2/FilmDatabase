@@ -3,7 +3,6 @@ package dk.kec.filmdb.controller;
 import dk.kec.filmdb.entity.Role;
 import dk.kec.filmdb.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +21,11 @@ import java.util.List;
 @RequestMapping("/role")
 public class RoleController {
 
-    @Autowired
-    private RoleService service;
+    private final RoleService service;
+
+    public RoleController(RoleService service) {
+        this.service = service;
+    }
 
     @GetMapping // does it make sense to get ALL roles???
     public ResponseEntity<List<Role>> getRoles() {

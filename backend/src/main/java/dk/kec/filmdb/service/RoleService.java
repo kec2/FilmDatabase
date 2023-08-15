@@ -3,7 +3,6 @@ package dk.kec.filmdb.service;
 import dk.kec.filmdb.entity.Role;
 import dk.kec.filmdb.repository.RoleRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,12 @@ import java.util.List;
 @Slf4j
 public class RoleService {
 
-    @Autowired
-    private RoleRepository repository;
+    private final RoleRepository repository;
+
+    public RoleService(RoleRepository repository) {
+        this.repository = repository;
+    }
+
 
     public List<Role> getRoles() {
         return repository.findAll();

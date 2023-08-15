@@ -3,7 +3,6 @@ package dk.kec.filmdb.controller;
 import dk.kec.filmdb.entity.Actor;
 import dk.kec.filmdb.service.ActorService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +21,11 @@ import java.util.List;
 @RequestMapping("/actor")
 public class ActorController {
 
-    @Autowired
-    private ActorService service;
+    private final ActorService service;
+
+    public ActorController(ActorService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<Actor>> getActors() {
