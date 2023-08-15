@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,18 +22,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-// Alternative 1: Use pure Spring
-//@ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = {PersistenceApplication.class})
-
-// Alternative 2: Use SpringBootTest
 @SpringBootTest
-//@ContextConfiguration(name = "default")
+@ContextConfiguration(name = "default")
 @ActiveProfiles("test")
-
-// Alternative 3: Use Slice
-//@DataJpaTest
-//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class GenreRepositoryTest {
 
     @Autowired

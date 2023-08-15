@@ -20,18 +20,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-// Alternative 1: Use pure Spring
-//@ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = {PersistenceApplication.class})
-
-// Alternative 2: Use SpringBootTest
 @SpringBootTest
 @ContextConfiguration(name = "default")
 @ActiveProfiles("test")
-
-// Alternative 3: Use Slice
-//@DataJpaTest
-//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class MovieRepositoryTest {
 
     @Autowired
