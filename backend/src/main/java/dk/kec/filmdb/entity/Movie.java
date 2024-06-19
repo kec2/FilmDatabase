@@ -1,6 +1,5 @@
 package dk.kec.filmdb.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
@@ -47,8 +46,7 @@ public class Movie extends Auditing {
 
     private String externalId; // engine:id. fx imdb:tt12345678
 
-    @Column(name = "`year`")
-    private Integer year;
+    private Integer releaseYear;
 
     private String imgUrl;
 
