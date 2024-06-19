@@ -74,6 +74,6 @@ public class GenreController {
     public ResponseEntity<Void> deleteGenre(@PathVariable Long genreId) {
         log.info("Rest call to delete genre");
         service.deleteGenre(genreId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

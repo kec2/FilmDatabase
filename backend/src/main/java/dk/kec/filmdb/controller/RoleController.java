@@ -96,6 +96,6 @@ public class RoleController {
     public ResponseEntity<Void> deleteRole(@PathVariable Long roleId) {
         log.info("Rest call to delete role");
         service.deleteRole(roleId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

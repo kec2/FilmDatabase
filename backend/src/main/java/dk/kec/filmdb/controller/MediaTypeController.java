@@ -74,6 +74,6 @@ public class MediaTypeController {
     public ResponseEntity<Void> deleteMediaType(@PathVariable Long mediaTypeId) {
         log.info("Rest call to delete mediaType");
         service.deleteMediaType(mediaTypeId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

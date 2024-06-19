@@ -74,6 +74,6 @@ public class OwnerController {
     public ResponseEntity<Void> deleteOwner(@PathVariable Long ownerId) {
         log.info("Rest call to delete owner");
         service.deleteOwner(ownerId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

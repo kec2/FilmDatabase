@@ -74,6 +74,6 @@ public class ActorController {
     public ResponseEntity<Void> deleteActor(@PathVariable Long actorId) {
         log.info("Rest call to delete actor");
         service.deleteActor(actorId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
