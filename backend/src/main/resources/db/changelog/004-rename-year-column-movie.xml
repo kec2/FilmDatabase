@@ -5,6 +5,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
 
     <changeSet id="4::renameColumn" author="klaus">
-        <renameColumn tableName="movie" oldColumnName="year" newColumnName="release_year" />
+        <renameColumn tableName="movie" oldColumnName="year" newColumnName="release_year" columnDataType="smallint"/>
     </changeSet>
 </databaseChangeLog>
