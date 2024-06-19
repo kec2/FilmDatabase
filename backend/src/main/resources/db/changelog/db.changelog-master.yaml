@@ -5,3 +5,5 @@ databaseChangeLog:
       file: db/changelog/002-add-auditing.xml
   - include:
       file: db/changelog/003-add-genres.xml
+  - include:
+      file: db/changelog/004-rename-year-column-movie.xml
